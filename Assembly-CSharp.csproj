@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\HSPackages\InfiniteGround\Script\Ground.cs" />
      <Compile Include="Assets\Scripts\ControllerGrabObject.cs" />
      <Compile Include="Assets\Scripts\LaserPointer.cs" />
      <Compile Include="Assets\Scripts\MarkerDestroy.cs" />
@@ -89,6 +90,8 @@
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
      <None Include="Assets\SteamVR\Resources\SteamVR_Fade.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_ClearAll.shader" />
+     <None Include="Assets\HSPackages\InfiniteGround\Documentation\ReadMe.txt" />
+     <None Include="Assets\HSPackages\InfiniteGround\Shader\Ground.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_AlphaOut.shader" />
      <None Include="Assets\SteamVR\readme.txt" />
