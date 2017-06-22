@@ -9,6 +9,7 @@ public class SecondMarkerSpawn : MonoBehaviour
     private GameObject FirstMarker;
     int xRange;
     int zRange;
+    Renderer rend;
     
     void Start()
     {
@@ -21,6 +22,9 @@ public class SecondMarkerSpawn : MonoBehaviour
         xRange = Random.Range(-3, 4);
         zRange = Random.Range(-3, 4);
 
+        rend = GetComponent<Renderer>();
+        
+
 
     }
 
@@ -28,12 +32,16 @@ public class SecondMarkerSpawn : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyUp(KeyCode.Space)) {
+    }
 
-            this.transform.position = new Vector3(FirstMarker.transform.position.x + xRange, 0, FirstMarker.transform.position.z + zRange);
-                //Random.Range(-3, 4), 0, Random.Range(-3, 4));
-           
-       }
+    public void SpawnSecondMarker()
+    {
+        
+        this.transform.position = new Vector3(FirstMarker.transform.position.x + xRange, 0, FirstMarker.transform.position.z + zRange);
+
+
+        //SecondMarker.GetComponent<Renderer>().enabled = true;
+        rend.enabled = true;
 
     }
 }

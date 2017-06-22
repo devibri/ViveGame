@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MarkerDestroy : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public SecondMarkerSpawn otherScript;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -19,6 +21,7 @@ public class MarkerDestroy : MonoBehaviour {
         if (other.gameObject.CompareTag("Marker"))
         {
             other.gameObject.SetActive(false);
+            otherScript.SpawnSecondMarker();
         }
     }
 }
