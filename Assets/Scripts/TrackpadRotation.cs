@@ -3,24 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrackpadRotation : MonoBehaviour {
-
-    private GameObject camera;
-
-    // I don't know what this is
-    private SteamVR_TrackedObject trackedObj;
-
     // Defining and instantiating a reference the controller 
-    private SteamVR_Controller.Device Controller
-    {
+    private SteamVR_TrackedObject trackedObj;
+    private SteamVR_Controller.Device Controller {
         get { return SteamVR_Controller.Input((int)trackedObj.index); }
     }
 
-    // Defining and instantiating a reference to the hmd
-    //private Stea
+    // private GameObeject controller; 
 
-    // Keep track of the position of a thumb on the trackpad, the direction
-    // vector of the player, and the angle between the two
-    Vector2 touchPadVector, playerDirectionVector;
+
+    // Keep track of the location of the thumb on the trackpad and the
+    // direction of the player
+    Vector2 touchPosition, playerDirection;
+    private GameObject camera;
+
 
     void Awake(){
         trackedObj = GetComponent<SteamVR_TrackedObject>();
@@ -29,18 +25,21 @@ public class TrackpadRotation : MonoBehaviour {
     // Use this for initialization
     void Start () {
         camera = GameObject.Find("Camera (head)");
+        // controller = GameObject.Find("Controller (right)");
     }
-	
-	// Update is called once per frame
-	void Update () {}
+
+    // Update is called once per frame
+    void Update () {
+        Debug.Log(getAngle());
+    }
 
     // Get 
     float getAngle(){
         // Update the two vectors
-        touchPadVector = Controller.GetAxis();
-        playerDirectionVector = camera.transform.forward;
+        touchPosition = Controller.GetAxis();
+        playerDirection = camera.transform.forward;
 
         // Find the angle between them
-        return Vector2.Angle(playerDirectionVector, touchPadVector);
+        return Vector2.Angle(playerDirection, touchPosition);
     }
 }
