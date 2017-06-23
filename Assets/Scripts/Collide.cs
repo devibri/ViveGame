@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Collide : MonoBehaviour
 {
-    private GameObject rig;
+    //private GameObject rig;
     private GameObject cam;
     // Use this for initialization
     void Start()
     {
-        rig = GetComponent<GameObject>();
+        //rig = GetComponent<GameObject>();
         cam = GameObject.Find("Camera (head)");
 
     }
@@ -18,6 +18,6 @@ public class Collide : MonoBehaviour
     void Update()
     {
         //sets the center of the collider to the camera location
-        rig.GetComponent<BoxCollider>().center = cam.GetComponent<Transform>().position;
+        this.GetComponent<BoxCollider>().center = cam.GetComponent<Transform>().position;
     }
 }
