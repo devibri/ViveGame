@@ -7,9 +7,11 @@ public class SecondMarkerSpawn : MonoBehaviour
     // Use this for initialization
     private GameObject SecondMarker;
     private GameObject FirstMarker;
+    private GameObject arrow;
     int xRange;
     int zRange;
     Renderer rend;
+    Renderer rend2;
     
     void Start()
     {
@@ -39,6 +41,9 @@ public class SecondMarkerSpawn : MonoBehaviour
         
         this.transform.position = new Vector3(FirstMarker.transform.position.x + xRange, 0, FirstMarker.transform.position.z + zRange);
 
+        arrow = GameObject.Find("ringarrow2");
+        rend2 = arrow.GetComponent<Renderer>();
+        rend2.enabled = true;
 
         //SecondMarker.GetComponent<Renderer>().enabled = true;
         rend.enabled = true;

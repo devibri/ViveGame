@@ -5,6 +5,7 @@ using UnityEngine;
 public class MarkerDestroy : MonoBehaviour {
 
     public SecondMarkerSpawn otherScript;
+    //public SecondArrowSpawn otherScript2;
 
     // Use this for initialization
     void Start () {
@@ -22,6 +23,8 @@ public class MarkerDestroy : MonoBehaviour {
         {
             other.gameObject.SetActive(false);
             otherScript.SpawnSecondMarker();
+            
+            //otherScript2.SpawnSecondArrow();
         }
         
     }

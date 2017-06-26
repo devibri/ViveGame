@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\HSPackages\InfiniteGround\Script\Ground.cs" />
+     <Compile Include="Assets\Scripts\ArrowRotate.cs" />
+     <Compile Include="Assets\Scripts\Collide.cs" />
      <Compile Include="Assets\Scripts\ControllerGrabObject.cs" />
      <Compile Include="Assets\Scripts\LaserPointer.cs" />
      <Compile Include="Assets\Scripts\MarkerDestroy.cs" />
