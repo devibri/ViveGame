@@ -23,5 +23,6 @@ public class MarkerDestroy : MonoBehaviour {
             other.gameObject.SetActive(false);
             otherScript.SpawnSecondMarker();
         }
+        
     }
 }
