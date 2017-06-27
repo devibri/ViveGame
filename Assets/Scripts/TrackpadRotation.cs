@@ -33,20 +33,28 @@ public class TrackpadRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("You're facing: " + camera.transform.forward.ToString());
-        //Debug.Log("You're pointing: " + Controller.GetAxis().ToString()); // Working as expected
-        Debug.Log(getAngle());
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log(getAngle());
+        }
+
+        // Actually rotating
+        // camera.transform.Rotate(0, , 0)
+    }
+
+    int sign(float num){
+        if (num >= 0)
+        {
+            return 1;
+        }
+        else {
+            return -1;
+        }
     }
 
     // Get the angle the play would rotate
     float getAngle()
     {
-        playerDirection = camera.transform.forward;
-        Vector2 trackpadDirection = Controller.GetAxis();
-        float offsetAngle = Vector.Angle(playerDirection, Vector2.up);
-        Vector2 turnVector = Quaternion.AngleAxis(offsetAngle, Vector3.forwward) * trackpadDirection;
-
-        // Find the angle between them
-        return Vector2.Angle(playerDirection, turnVector);
+        return Vector2.Angle(Vector2.up, Controller.GetAxis()) * sign(Controller.GetAxis().x);
     }
 }
