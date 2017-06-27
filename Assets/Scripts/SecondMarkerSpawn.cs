@@ -8,10 +8,12 @@ public class SecondMarkerSpawn : MonoBehaviour
     private GameObject SecondMarker;
     private GameObject FirstMarker;
     private GameObject arrow;
+    //private GameObject firstarrow;
     int xRange;
     int zRange;
     Renderer rend;
     Renderer rend2;
+    int degree;
     
     void Start()
     {
@@ -41,11 +43,19 @@ public class SecondMarkerSpawn : MonoBehaviour
         
         this.transform.position = new Vector3(FirstMarker.transform.position.x + xRange, 0, FirstMarker.transform.position.z + zRange);
 
+        //adjusting the second arrow's ring
         arrow = GameObject.Find("ringarrow2");
+
+        //finding the rotation of first arrow
+        degree = ArrowRotate.randDegree; //GameObject.Find("ringarrow").GetComponent<ArrowRotate>().randNum;
+
+        //and setting the second arrow to the same rotation
+        arrow.transform.Rotate(0, degree, 0);
+
         rend2 = arrow.GetComponent<Renderer>();
         rend2.enabled = true;
 
-        //SecondMarker.GetComponent<Renderer>().enabled = true;
+       
         rend.enabled = true;
 
     }
