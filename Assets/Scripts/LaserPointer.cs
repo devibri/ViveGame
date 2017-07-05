@@ -1,26 +1,4 @@
-﻿/*
- * Copyright (c) 2016 Razeware LLC
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LaserPointer : MonoBehaviour
 {
@@ -42,6 +20,14 @@ public class LaserPointer : MonoBehaviour
     private Vector3 hitPoint; // Point where the raycast hits
     private bool shouldTeleport; // True if there's a valid teleport target
 
+    /* MoveMode refers to the type of movement. They are defined as follows
+     *  1 - Teleporting and physically turning
+     *  2 - Teleporting and turning with directional pad
+     *  Any other number - Physically walking and rotating
+     */ 
+    private int MoveMode = 2;
+
+
     private SteamVR_Controller.Device Controller
     {
         get { return SteamVR_Controller.Input((int)trackedObj.index); }
@@ -52,46 +38,71 @@ public class LaserPointer : MonoBehaviour
         trackedObj = GetComponent<SteamVR_TrackedObject>();
     }
 
-    //new
     void Start()
     {
         laser = Instantiate(laserPrefab);
         laserTransform = laser.transform;
         reticle = Instantiate(teleportReticlePrefab);
         teleportReticleTransform = reticle.transform;
+        laser.SetActive(false);
+        reticle.SetActive(false);
     }
 
     void Update()
     {
-        // Is the touchpad held down?
-        if (Controller.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
-        {
-            RaycastHit hit;
+        // Check if the user started moving, taking into account which movement
+        // mode they are in
+        bool movementInitiated = false;
+        if (MoveMode == 1) {
+            movementInitiated = Controller.GetPress(SteamVR_Controller.ButtonMask.Trigger);
+        } else if (MoveMode == 2) {
+            movementInitiated = Controller.GetPress(SteamVR_Controller.ButtonMask.Touchpad);
+        }
 
+        if (movementInitiated) {
             // Send out a raycast from the controller
+            RaycastHit hit;
             if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100, teleportMask))
             {
+                // Point the laser
                 hitPoint = hit.point;
-
                 ShowLaser(hit);
 
                 //Show teleport reticle
                 reticle.SetActive(true);
                 teleportReticleTransform.position = hitPoint + teleportReticleOffset;
-
+                
+                // If you're in this block, you hit something with the teleport mask
                 shouldTeleport = true;
+            } else {
+                // If you didn't hit the somthing with the teleport mask, turn off the laser
+                laser.SetActive(false);
+                reticle.SetActive(false);
             }
         }
-        else // Touchpad not held down, hide laser & teleport reticle
-        {
-            laser.SetActive(false);
-            reticle.SetActive(false);
+
+        // Check if the user stopped moving, taking into account which movement
+        // mode they are in
+        bool movementTerminated = false;
+        if (MoveMode == 1) {
+            movementTerminated = Controller.GetPressUp(SteamVR_Controller.ButtonMask.Trigger);
+        } else if (MoveMode == 2) {
+            movementTerminated = Controller.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad);
         }
 
-        // Touchpad released this frame & valid teleport position found
-        if (Controller.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && shouldTeleport)
-        {
+        // If the player initiated a teleport where somewhere nice (object with teleport mask)
+        // then teleport them there
+        if (movementTerminated && shouldTeleport) {
             Teleport();
+
+            // If the user is in the trackpad rotation mode
+            // then rotate them
+            if (MoveMode == 2) {
+                Rotate();
+            }
+
+            // Laser stays for some reason witout this line
+            laser.SetActive(false);
         }
     }
 
@@ -112,5 +123,16 @@ public class LaserPointer : MonoBehaviour
         difference.y = 0; // Don't change the final position's y position, it should always be equal to that of the hit point
 
         cameraRigTransform.position = hitPoint + difference; // Change the camera rig position to where the the teleport reticle was. Also add the difference so the new virtual room position is relative to the player position, allowing the player's new position to be exactly where they pointed. (see illustration)
+    }
+
+    float GetPlayerRotation() {
+        float thumbAngle = Vector2.Angle(Vector2.up, Controller.GetAxis());
+        float turnSign = Mathf.Sign(Controller.GetAxis().x);
+        return thumbAngle * turnSign;
+    }
+
+    void Rotate()
+    {
+        cameraRigTransform.Rotate(0, GetPlayerRotation(), 0);
     }
 }
