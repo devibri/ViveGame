@@ -1,23 +1,26 @@
 fileFormatVersion: 2
-guid: 9717dcaeefa5eb04dacc4cff8ceb1d43
-timeCreated: 1480869331
+guid: 3b95257c551ad3b4ca4f9e197d048c7e
+timeCreated: 1499264953
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Camera
-    100004: Lamp
-    100006: RWCube
-    400000: //RootNode
-    400002: Camera
-    400004: Lamp
-    400006: RWCube
-    2300000: //RootNode
-    2300002: RWCube
-    3300000: //RootNode
-    3300002: RWCube
-    4300000: RWCube
+    100000: pPipe1
+    100002: pPyramid1
+    100004: pPyramid2
+    100006: //RootNode
+    100008: transform1
+    100010: transform2
+    400000: pPipe1
+    400002: pPyramid1
+    400004: pPyramid2
+    400006: //RootNode
+    400008: transform1
+    400010: transform2
+    2300000: pPyramid2
+    3300000: pPyramid2
+    4300000: pPyramid2
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -28,6 +31,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -80,7 +85,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
