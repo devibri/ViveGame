@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MarkerDestroy : MonoBehaviour {
 
-    public SecondMarkerSpawn otherScript;
+    public FirstMarkerSpawn otherScript;
     //public SecondArrowSpawn otherScript2;
 
     // Use this for initialization
@@ -22,7 +22,7 @@ public class MarkerDestroy : MonoBehaviour {
         if (other.gameObject.CompareTag("Marker"))
         {
             other.gameObject.SetActive(false);
-            otherScript.SpawnSecondMarker();
+            otherScript.SpawnFirstMarker();
             
             //otherScript2.SpawnSecondArrow();
         }
