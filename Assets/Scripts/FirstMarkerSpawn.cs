@@ -56,34 +56,26 @@ public class FirstMarkerSpawn : MonoBehaviour {
         rend.enabled = true;
         rend2.enabled = true;
 
-        //changing first marker position depending on starting position  --  5ft + random amount
-        if (startPosition == 1)
-        {
-            this.transform.position = new Vector3(1.524f + randNum, 0, 0);
-        }
-        else if (startPosition == 2)
-        {
-            this.transform.position = new Vector3(0, 0, -1.524f - randNum);
-        }
-        else if (startPosition == 3)
-        {
-            this.transform.position = new Vector3(-1.524f - randNum, 0, 0);
-        }
-        else {
-            this.transform.position = new Vector3(0, 0, 1.524f + randNum);
-        }
+        //finding the rotation of start marker
+        startDegree = StartMarkerSpawn.degree; 
+
+        //temporarily setting first marker to same degree
+        this.transform.Rotate(0, startDegree, 0);
+        //Debug.Log("StartDegree: " + startDegree);
+
+        
+
+        //now moving firstmarker forward given amount -- setting position to other marker, then moving it forward
+        this.transform.position = StartMarker.transform.position;
+
+        this.transform.Translate(Vector3.back * (1.524f + randNum), Space.Self); //5ft + random amt
 
 
-
-        //changing rotation of firstmarker
-
-        //finding the rotation of start arrow
-        startDegree = StartMarkerSpawn.degree;
-
+        //changing rotation of firstmarker to the same rotation plus or minus a certain amount
         degree = startDegree + degreeChange[(int)randNum2];
+        //Debug.Log("Degree: " + degree);
+        this.transform.Rotate(0, this.transform.rotation.y + degreeChange[(int)randNum2], 0);
 
-        //and setting the second arrow to the same rotation plus or minus a certain amount
-        this.transform.Rotate(0, degree, 0);
 
     }
 }
