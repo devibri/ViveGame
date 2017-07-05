@@ -53,14 +53,14 @@ public class Move : MonoBehaviour
         {
             GetComponent<Transform>().RotateAround(GetComponent<Transform>().transform.position, Vector3.up, MOVE_AMOUNT);
         }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            GetComponent<Transform>().RotateAround(GetComponent<Transform>().transform.position, Vector3.right, MOVE_AMOUNT);
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            GetComponent<Transform>().RotateAround(GetComponent<Transform>().transform.position, Vector3.right, -MOVE_AMOUNT);
-        }
+        //if (Input.GetKey(KeyCode.UpArrow))
+        //{
+        //    GetComponent<Transform>().RotateAround(GetComponent<Transform>().transform.position, Vector3.right, MOVE_AMOUNT);
+        //}
+        //if (Input.GetKey(KeyCode.DownArrow))
+        //{
+        //    GetComponent<Transform>().RotateAround(GetComponent<Transform>().transform.position, Vector3.right, -MOVE_AMOUNT);
+        //}
         if (Input.GetKey(KeyCode.Space))
         {
             GetComponent<Transform>().Translate(Vector3.up / 10);
