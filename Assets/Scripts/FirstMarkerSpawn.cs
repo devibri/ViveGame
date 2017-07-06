@@ -6,6 +6,7 @@ public class FirstMarkerSpawn : MonoBehaviour {
     
     private GameObject FirstMarker;
     private GameObject StartMarker;
+    private GameObject GameController;
     private GameObject arrow;
 
     Renderer rend; //renderer for FirstMarker
@@ -14,23 +15,30 @@ public class FirstMarkerSpawn : MonoBehaviour {
     public static float degree; //degree of first arrow
     float currentRotation;
     float randNum; //determines which random length is picked
-    float randNum2; //determines which random degree is picked
-    
-    int startPosition; //determines which start position was picked
-    int[] degreeChange = new int[] {-70, -42, -14, 14, 42, 70}; //degrees plus or minus the current heading -- change this to change angles of triangles 
+    //float randNum2; //determines which random degree is picked
+
+    //int[] degreeChange = new int[] { -70, -42, -14, 14, 42, 70 }; //degrees plus or minus the current heading -- change this to change angles of triangles 
+
+
 
     void Start () {
         this.transform.position = new Vector3(10, 0, 10);
 
+        
+
         //how much distance the first marker will change by, randomly
         randNum = Random.Range(0, 6) / 3.28f; //divide to convert to meter amt
-        randNum2 = Random.Range(0, 6); //number of options for degree picked 
+        //randNum2 = Random.Range(0, 6); //number of options for degree picked 
 
 
         //start marker
         StartMarker = GameObject.Find("StartMarker");
         StartMarkerSpawn StartMarkerScript = StartMarker.GetComponent<StartMarkerSpawn>();
-        startPosition = StartMarkerScript.randNum; //number of options for degrees picked 
+
+        //main game controller 
+        GameController = GameObject.Find("GameController");
+        Restart RestartScript = GameController.GetComponent<Restart>();
+        //RestartScript.startPosition = StartMarkerScript.randNum; //number of options for degrees picked 
 
         //firstmarker's arrow
         arrow = GameObject.Find("ringarrow");
@@ -72,9 +80,9 @@ public class FirstMarkerSpawn : MonoBehaviour {
 
 
         //changing rotation of firstmarker to the same rotation plus or minus a certain amount
-        degree = startDegree + degreeChange[(int)randNum2];
+        degree = startDegree + Restart.degree;
         //Debug.Log("Degree: " + degree);
-        this.transform.Rotate(0, this.transform.rotation.y + degreeChange[(int)randNum2], 0);
+        this.transform.Rotate(0, this.transform.rotation.y + Restart.degree, 0);
 
 
     }
