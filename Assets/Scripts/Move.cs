@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    const float MOVE_AMOUNT = 1.0f;
+    const float MOVE_AMOUNT = 10.0f;
     float currentTime;
     const string outputFile = "Place.txt";
-    public GameObject cameraRig;
+    public GameObject eyes;
     // Use this for initialization
     void Start()
     {
@@ -22,16 +22,20 @@ public class Move : MonoBehaviour
     {
         if (Time.time - currentTime > 0.2f)
         {
-            System.IO.File.AppendAllText(outputFile, GetComponent<Transform>().position + cameraRig.GetComponent<Transform>().position + " " + GetComponent<Transform>().eulerAngles.ToString() + "\r\n");
+            System.IO.File.AppendAllText(outputFile, eyes.GetComponent<Transform>().position + " " + GetComponent<Transform>().position + " " + eyes.GetComponent<Transform>().eulerAngles.ToString() + "\r\n");
             currentTime = Time.time;
         }
     }
 
     void FixedUpdate()
     {
+        move();
+    }
+    void move()
+    {
         if (Input.GetKey(KeyCode.W))
         {
-            GetComponent<Transform>().Translate(Vector3.forward / 10);
+            GetComponent<Transform>().Translate(Vector3.forward / 10, GetComponent<Transform>());
         }
         if (Input.GetKey(KeyCode.A))
         {
