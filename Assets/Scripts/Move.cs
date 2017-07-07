@@ -35,19 +35,19 @@ public class Move : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            GetComponent<Transform>().Translate(Vector3.forward / 10, GetComponent<Transform>());
+            GetComponent<Transform>().Translate(GetComponent<Transform>().forward / 10, Space.World);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            GetComponent<Transform>().Translate(Vector3.left / 10);
+            GetComponent<Transform>().Translate(GetComponent<Transform>().right / -10, Space.World);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            GetComponent<Transform>().Translate(Vector3.back / 10);
+            GetComponent<Transform>().Translate(GetComponent<Transform>().forward / -10, Space.World);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            GetComponent<Transform>().Translate(Vector3.right / 10);
+            GetComponent<Transform>().Translate(GetComponent<Transform>().right / 10, Space.World);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {

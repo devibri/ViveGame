@@ -21,7 +21,9 @@ public class FirstMarkerSpawn : MonoBehaviour {
 
 
 
-    void Start () {
+    void Start ()
+    {
+        
         this.transform.position = new Vector3(10, 0, 10);
 
         
@@ -34,10 +36,11 @@ public class FirstMarkerSpawn : MonoBehaviour {
         //start marker
         StartMarker = GameObject.Find("StartMarker");
         StartMarkerSpawn StartMarkerScript = StartMarker.GetComponent<StartMarkerSpawn>();
-
+        
         //main game controller 
-        GameController = GameObject.Find("GameController");
+        GameController = GameObject.Find("GameController"); 
         Restart RestartScript = GameController.GetComponent<Restart>();
+
         //RestartScript.startPosition = StartMarkerScript.randNum; //number of options for degrees picked 
 
         //firstmarker's arrow
@@ -49,13 +52,14 @@ public class FirstMarkerSpawn : MonoBehaviour {
 
         //make firstmarker invisible on start, until startmarker collision
         rend.enabled = false;
-        rend2.enabled = false;
+        rend2.enabled = false; 
     }
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+
+    }
 
     public void SpawnFirstMarker()
     {
@@ -69,7 +73,7 @@ public class FirstMarkerSpawn : MonoBehaviour {
 
         //temporarily setting first marker to same degree
         this.transform.Rotate(0, startDegree, 0);
-        //Debug.Log("StartDegree: " + startDegree);
+        //
 
         
 
@@ -81,7 +85,7 @@ public class FirstMarkerSpawn : MonoBehaviour {
 
         //changing rotation of firstmarker to the same rotation plus or minus a certain amount
         degree = startDegree + Restart.degree;
-        //Debug.Log("Degree: " + degree);
+        //
         this.transform.Rotate(0, this.transform.rotation.y + Restart.degree, 0);
 
 

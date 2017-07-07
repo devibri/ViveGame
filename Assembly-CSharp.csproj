@@ -92,7 +92,7 @@
      <Compile Include="Assets\Scripts\LaserPointer.cs" />
      <Compile Include="Assets\Scripts\MarkerDestroy.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />
-     <Compile Include="Assets\Scripts\Record teleport.cs" />
+     <Compile Include="Assets\Scripts\Recordteleport.cs" />
      <Compile Include="Assets\Scripts\Restart.cs" />
      <Compile Include="Assets\Scripts\SecondMarkerSpawn.cs" />
      <Compile Include="Assets\Scripts\StartMarkerSpawn.cs" />

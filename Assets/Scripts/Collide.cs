@@ -12,7 +12,7 @@ public class Collide : MonoBehaviour
         //rig = GetComponent<GameObject>();
         cam = GameObject.Find("Camera (head)");
 
-    }
+}
 
     // Update is called once per frame
     void Update()

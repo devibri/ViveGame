@@ -29,6 +29,7 @@ public class Recordteleport : MonoBehaviour
 
     const string outputFile = "Teleport.txt";
     const string trackpadFile = "Track.txt";
+    const string timeFile = "TrialTime.txt";
     Vector2 zeroVector = new Vector2(0.0f, 0.0f);
     float currentTime;
 
@@ -62,6 +63,11 @@ public class Recordteleport : MonoBehaviour
         {
             System.IO.File.Delete(trackpadFile);
         }
+        if (System.IO.File.Exists(trackpadFile))
+        {
+            System.IO.File.Delete(trackpadFile);
+        }
+        System.IO.File.AppendAllText(trackpadFile, "Start time:" + Time.time +"\r\n");
     }
 
     void Update()
