@@ -25,8 +25,8 @@ public class LaserPointer : MonoBehaviour
      *  2 - Teleporting and turning with directional pad
      *  Any other number - Physically walking and rotating
      */ 
-    private int MoveMode = 2;
-
+    private int MoveMode = 0;
+    public Transform eyeTransform;
 
     private SteamVR_Controller.Device Controller
     {
@@ -60,6 +60,8 @@ public class LaserPointer : MonoBehaviour
         }
 
         if (movementInitiated) {
+            Vector3 initiationOrientation = cameraRigTransform.forward;
+
             // Send out a raycast from the controller
             RaycastHit hit;
             if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100, teleportMask))
@@ -71,7 +73,22 @@ public class LaserPointer : MonoBehaviour
                 //Show teleport reticle
                 reticle.SetActive(true);
                 teleportReticleTransform.position = hitPoint + teleportReticleOffset;
+
+
+
+
                 
+
+
+                // Rotate the marker to match new orientation
+                if (MoveMode == 2) {
+                    teleportReticleTransform.rotation = Quaternion.Euler(0, cameraRigTransform.eulerAngles.y + GetPlayerRotation(), 0); //+ headTransform.rotation.eulerAngles.y
+                    //teleportReticleTransform.forward
+                }
+                
+
+
+
                 // If you're in this block, you hit something with the teleport mask
                 shouldTeleport = true;
             } else {
