@@ -5,39 +5,70 @@ using UnityEngine;
 //This script positions the first marker at the starting marker position. 
 
 public class StartMarkerSpawn : MonoBehaviour {
-    public int randNum; //randomly pick starting position
+    
     float xCoord;
     float zCoord;
     public static int degree;
+    private GameObject GameController;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
+
+        //main game controller 
+        GameController = GameObject.Find("GameController");
+        Restart RestartScript = GameController.GetComponent<Restart>();
+
+
         xCoord = 0;
-        zCoord = 0; 
+        zCoord = 0;
 
-        randNum = Random.Range(1, 5); //let this be the number of starting positions, min (inclusive) to max (exclusive)
+        
 
         //depending on random roll, set start marker to start position and rotation towards origin
-        if (randNum == 1)
+        if (RestartScript.startPosition == 1)
         {
             xCoord = -1.83f;
             degree = 270;
-            
+
         }
-        else if (randNum == 2)
+        else if (RestartScript.startPosition == 2)
         {
             zCoord = 2.44f;
             degree = 0;
         }
-        else if (randNum == 3)
+        else if (RestartScript.startPosition == 3)
         {
             xCoord = 1.83f;
             degree = 90;
         }
-        else { //if randNum == 3
-            zCoord = -2.44f; //left
+        else if (RestartScript.startPosition == 4)
+        {
+            zCoord = -2.44f;
             degree = 180;
+        }
+        else if (RestartScript.startPosition == 5)
+        {
+            xCoord = -1.83f;
+            zCoord = 2.44f;
+            degree = 315;
+        }
+        else if (RestartScript.startPosition == 6)
+        {
+            xCoord = 1.83f;
+            zCoord = 2.44f;
+            degree = 45;
+        }
+        else if (RestartScript.startPosition == 7)
+        {
+            xCoord = 1.83f;
+            zCoord = -2.44f;
+            degree = 135;
+        }
+        else { //randnum == 8
+            xCoord = -1.83f;
+            zCoord = -2.44f;
+            degree = 225;
         }
 
         this.transform.Rotate(0, degree, 0);
