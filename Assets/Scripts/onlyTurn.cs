@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LaserPointer : MonoBehaviour
+public class OnlyTurn : MonoBehaviour
 {
     public Transform cameraRigTransform;
     public Transform headTransform; // The camera rig's head
