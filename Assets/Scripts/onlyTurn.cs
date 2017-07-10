@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class LaserPointer : MonoBehaviour
 {
@@ -25,7 +25,7 @@ public class LaserPointer : MonoBehaviour
      *  2 - Teleporting and turning with directional pad
      *  Any other number - Physically walking and rotating
      */ 
-    private int MoveMode = 0;
+    private int MoveMode = 1;
     public Transform eyeTransform;
 
     private SteamVR_Controller.Device Controller
