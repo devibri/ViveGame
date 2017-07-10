@@ -11,6 +11,7 @@ public class StartMarkerSpawn : MonoBehaviour {
     public static int degree;
     private GameObject GameController;
     private const string markerFile = "Marker.txt";
+    private const string timeFile = "Time.txt";
 
 
     // Use this for initialization
@@ -73,7 +74,16 @@ public class StartMarkerSpawn : MonoBehaviour {
 
         this.transform.Rotate(0, degree, 0);
         this.transform.position = new Vector3(xCoord, 0, zCoord);
+        if (System.IO.File.Exists(markerFile))
+        {
+            System.IO.File.Delete(markerFile);
+        }
+        if (System.IO.File.Exists(timeFile))
+        {
+            System.IO.File.Delete(timeFile);
+        }
         System.IO.File.AppendAllText(markerFile, "Starting Marker:" + this.transform.position + "\r\n");
+        System.IO.File.AppendAllText(timeFile, "Start time:" + Time.time + "\r\n");
 
     }
 	
