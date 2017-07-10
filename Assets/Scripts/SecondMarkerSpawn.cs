@@ -13,6 +13,7 @@ public class SecondMarkerSpawn : MonoBehaviour
     Renderer rend2;
     float firstDegree; //degree of first arrow
     float randNum; //determines how much forward the second marker spawns
+    private const string markerFile = "Marker.txt";
 
 
 
@@ -67,7 +68,11 @@ public class SecondMarkerSpawn : MonoBehaviour
         //moving second marker forward by a certain random amount
         this.transform.Translate(Vector3.back * (1.524f + distance), Space.Self); //5ft + random amt
 
-        
+
+        System.IO.File.AppendAllText(markerFile, "First Marker:" + FirstMarker.transform.position + "\r\n");
+        System.IO.File.AppendAllText(markerFile, "Second Marker:" + this.transform.position + "\r\n");
+
+
 
     }
    

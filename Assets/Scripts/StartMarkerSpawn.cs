@@ -10,6 +10,7 @@ public class StartMarkerSpawn : MonoBehaviour {
     float zCoord;
     public static int degree;
     private GameObject GameController;
+    private const string markerFile = "Marker.txt";
 
 
     // Use this for initialization
@@ -22,7 +23,6 @@ public class StartMarkerSpawn : MonoBehaviour {
 
         xCoord = 0;
         zCoord = 0;
-
         
 
         //depending on random roll, set start marker to start position and rotation towards origin
@@ -73,7 +73,8 @@ public class StartMarkerSpawn : MonoBehaviour {
 
         this.transform.Rotate(0, degree, 0);
         this.transform.position = new Vector3(xCoord, 0, zCoord);
-        
+        System.IO.File.AppendAllText(markerFile, "Starting Marker:" + this.transform.position + "\r\n");
+
     }
 	
 	// Update is called once per frame

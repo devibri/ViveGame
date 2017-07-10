@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/MarkerCopy.unity
-=======
 - path: Assets/Scenes/Game.unity
->>>>>>> 6b5735d3ddc0e6be6b7dd4cb0c93ebfc695d2275
   isLoaded: 1
   isActive: 1
