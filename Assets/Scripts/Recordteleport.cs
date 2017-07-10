@@ -29,9 +29,10 @@ public class Recordteleport : MonoBehaviour
 
     const string outputFile = "Teleport.txt";
     const string trackpadFile = "Track.txt";
-    const string timeFile = "TrialTime.txt";
     Vector2 zeroVector = new Vector2(0.0f, 0.0f);
     float currentTime;
+
+    private GameObject[] markers = new GameObject[3];
 
 
     private SteamVR_Controller.Device Controller
@@ -53,6 +54,9 @@ public class Recordteleport : MonoBehaviour
         laser.SetActive(false);
         reticle.SetActive(false);
 
+        markers[0] = GameObject.Find("StartMarker");
+        markers[1] = GameObject.Find("FirstMarker");
+        markers[2] = GameObject.Find("SecondMarker");
         currentTime = Time.time;
         if (System.IO.File.Exists(outputFile))
         {
@@ -101,6 +105,20 @@ public class Recordteleport : MonoBehaviour
             {
                 // Point the laser
                 hitPoint = hit.point;
+
+                //This should work
+                foreach(GameObject obj in markers)
+                {
+                    if (obj.GetComponent<Renderer>().enabled)
+                    {
+                        Vector3 oldOrientation = trackedObj.transform.eulerAngles;
+                        trackedObj.transform.LookAt(obj.transform.position);
+                        Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100, teleportMask);
+                        trackedObj.transform.eulerAngles = oldOrientation;
+                        break;
+                    }
+                }
+
                 ShowLaser(hit);
 
                 //Show teleport reticle
