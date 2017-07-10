@@ -18,6 +18,7 @@ public class Collide : MonoBehaviour
     void Update()
     {
         //sets the center of the collider to the camera location
-        this.GetComponent<BoxCollider>().center = cam.GetComponent<Transform>().position;
+        this.transform.position = cam.GetComponent<Transform>().position;
+        //this.GetComponent<BoxCollider>().center = cam.GetComponent<Transform>().position;
     }
 }
