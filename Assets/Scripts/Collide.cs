@@ -10,7 +10,7 @@ public class Collide : MonoBehaviour
     void Start()
     {
         //rig = GetComponent<GameObject>();
-        cam = GameObject.Find("Camera (head)");
+        cam = GameObject.Find("Camera (eye)");
 
 }
 
