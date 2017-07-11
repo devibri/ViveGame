@@ -19,7 +19,7 @@ public class StartMarkerSpawn : MonoBehaviour {
 
         //main game controller 
         GameController = GameObject.Find("GameController");
-        Restart RestartScript = GameController.GetComponent<Restart>();
+        TrainingRestart RestartScript = GameController.GetComponent<TrainingRestart>();
 
 
         xCoord = 0;

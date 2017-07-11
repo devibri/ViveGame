@@ -38,8 +38,8 @@ public class FirstMarkerSpawn : MonoBehaviour {
         StartMarkerSpawn StartMarkerScript = StartMarker.GetComponent<StartMarkerSpawn>();
         
         //main game controller 
-        GameController = GameObject.Find("GameController"); 
-        Restart RestartScript = GameController.GetComponent<Restart>();
+        GameController = GameObject.Find("GameController");
+        TrainingRestart RestartScript = GameController.GetComponent<TrainingRestart>();
 
         //RestartScript.startPosition = StartMarkerScript.randNum; //number of options for degrees picked 
 
