@@ -324,19 +324,34 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
+<<<<<<< HEAD
+    - Assets/Scripts
+  m_ViewMode: 1
+  m_StartGridSize: 64
+  m_LastFolders:
+  - Assets/Scripts
+=======
     - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
   - Assets
+>>>>>>> 9accb477029875d8eb1e57dd02e536cc37acd810
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\emanuelb\Desktop\ViveGame
   m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
+    scrollPos: {x: 0, y: 16}
+    m_SelectedIDs: 8a280000
+    m_LastClickedID: 10378
+    m_ExpandedIDs: 00000000582600005a270000ba2700002431000072310000623d0000643d0000663d000000ca9a3bffffff7f
+=======
     scrollPos: {x: 0, y: 100}
     m_SelectedIDs: 58260000
     m_LastClickedID: 9816
     m_ExpandedIDs: 0000000058260000842600005e270000c0270000bc3000003631000084310000743d0000763d0000783d000000ca9a3bffffff7f
+>>>>>>> 9accb477029875d8eb1e57dd02e536cc37acd810
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -364,7 +379,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
+    m_ExpandedIDs: 00000000582600005a270000ba2700002431000072310000623d0000643d0000663d0000
+=======
     m_ExpandedIDs: 0000000058260000842600005e270000c0270000bc3000003631000084310000743d0000763d0000783d0000
+>>>>>>> 9accb477029875d8eb1e57dd02e536cc37acd810
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -480,9 +499,13 @@ MonoBehaviour:
     height: 624
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: b6070000
     m_LastClickedID: 0
+<<<<<<< HEAD
+    m_ExpandedIDs: dcfbffff0000000034320000
+=======
     m_ExpandedIDs: dcfbffff00000000
+>>>>>>> 9accb477029875d8eb1e57dd02e536cc37acd810
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -562,9 +585,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.03567591, y: -0.96340424, z: 0.16518626, w: -0.20807178}
+    m_Target: {x: 0.094678044, y: 0.5694337, z: -0.06624287, w: 0.8138761}
     speed: 2
+<<<<<<< HEAD
+    m_Value: {x: 0.09467805, y: 0.56943375, z: -0.06624288, w: 0.8138761}
+=======
     m_Value: {x: 0.03567591, y: 0.9634043, z: -0.16518627, w: 0.2080718}
+>>>>>>> 9accb477029875d8eb1e57dd02e536cc37acd810
   m_Size:
     m_Target: 10
     speed: 2
