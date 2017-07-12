@@ -29,7 +29,7 @@ public class LaserPointer : MonoBehaviour
     public Transform eyeTransform;
     public GameObject answerReticlePrefab;
     private GameObject answerReticle;
-    private Transform answerTeleportReticleTransport;
+    private Transform answerTeleportReticleTransform;
     public const ulong MoveButton = SteamVR_Controller.ButtonMask.Touchpad;
     public const ulong AnswerButton = SteamVR_Controller.ButtonMask.Trigger;
 
@@ -49,6 +49,8 @@ public class LaserPointer : MonoBehaviour
         laserTransform = laser.transform;
         reticle = Instantiate(teleportReticlePrefab);
         teleportReticleTransform = reticle.transform;
+        answerReticle = Instantiate(answerReticlePrefab);
+        answerTeleportReticleTransform = answerReticle.transform;
         laser.SetActive(false);
         reticle.SetActive(false);
     }
@@ -103,7 +105,7 @@ public class LaserPointer : MonoBehaviour
 
                 //Show teleport reticle
                 reticle.SetActive(true);
-                teleportReticleTransform.position = hitPoint + teleportReticleOffset;
+                answerTeleportReticleTransform.position = hitPoint + teleportReticleOffset;
 
                 // If you're in this block, you hit something with the teleport mask
                 shouldTeleport = true;
