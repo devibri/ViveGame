@@ -56,7 +56,7 @@ public class SecondMarkerSpawn : MonoBehaviour
         //changing rotation of secondmarker
 
         //finding the rotation of first arrow
-        firstDegree = FirstMarkerSpawn.degree;
+        firstDegree = TrainingFirstMarkerSpawn.degree;
 
         //and setting secondarrow to the same degree
         this.transform.Rotate(0, firstDegree, 0);

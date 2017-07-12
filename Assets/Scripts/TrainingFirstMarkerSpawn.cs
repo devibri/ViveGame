@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstMarkerSpawn : MonoBehaviour {
+public class TrainingFirstMarkerSpawn : MonoBehaviour {
     
     private GameObject FirstMarker;
     private GameObject StartMarker;
@@ -15,9 +15,6 @@ public class FirstMarkerSpawn : MonoBehaviour {
     public static float degree; //degree of first arrow
     float currentRotation;
     float randNum; //determines which random length is picked
-    //float randNum2; //determines which random degree is picked
-
-    //int[] degreeChange = new int[] { -70, -42, -14, 14, 42, 70 }; //degrees plus or minus the current heading -- change this to change angles of triangles 
 
 
 
@@ -30,18 +27,15 @@ public class FirstMarkerSpawn : MonoBehaviour {
 
         //how much distance the first marker will change by, randomly
         randNum = Random.Range(0, 6) / 3.28f; //divide to convert to meter amt
-        //randNum2 = Random.Range(0, 6); //number of options for degree picked 
-
 
         //start marker
         StartMarker = GameObject.Find("StartMarker");
-        StartMarkerSpawn StartMarkerScript = StartMarker.GetComponent<StartMarkerSpawn>();
+        TrainingStartMarkerSpawn StartMarkerScript = StartMarker.GetComponent<TrainingStartMarkerSpawn>();
         
         //main game controller 
         GameController = GameObject.Find("GameController");
-        Restart RestartScript = GameController.GetComponent<Restart>();
-
-        //RestartScript.startPosition = StartMarkerScript.randNum; //number of options for degrees picked 
+        TrainingRestart RestartScript = GameController.GetComponent<TrainingRestart>();
+        
 
         //firstmarker's arrow
         arrow = GameObject.Find("ringarrow");
@@ -68,25 +62,27 @@ public class FirstMarkerSpawn : MonoBehaviour {
         rend.enabled = true;
         rend2.enabled = true;
 
+        //now moving firstmarker forward given amount -- setting position to other marker, then moving it forward
+        this.transform.position = StartMarker.transform.position;
+
         //finding the rotation of start marker
-        startDegree = StartMarkerSpawn.degree; 
+        startDegree = TrainingStartMarkerSpawn.degree;
 
         //temporarily setting first marker to same degree
         this.transform.Rotate(0, startDegree, 0);
-        //
 
-        
 
-        //now moving firstmarker forward given amount -- setting position to other marker, then moving it forward
-        this.transform.position = StartMarker.transform.position;
 
         this.transform.Translate(Vector3.back * (1.524f + randNum), Space.Self); //5ft + random amt
 
 
+        
+        
+
         //changing rotation of firstmarker to the same rotation plus or minus a certain amount
-        degree = startDegree + Restart.degree;
+        degree = startDegree + TrainingRestart.degree;
         //
-        this.transform.Rotate(0, this.transform.rotation.y + Restart.degree, 0);
+        this.transform.Rotate(0, this.transform.rotation.y + TrainingRestart.degree, 0);
 
 
     }

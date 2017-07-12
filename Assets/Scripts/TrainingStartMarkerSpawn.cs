@@ -4,7 +4,7 @@ using UnityEngine;
 
 //This script positions the first marker at the starting marker position. 
 
-public class StartMarkerSpawn : MonoBehaviour {
+public class TrainingStartMarkerSpawn : MonoBehaviour {
     
     float xCoord;
     float zCoord;
@@ -19,7 +19,7 @@ public class StartMarkerSpawn : MonoBehaviour {
 
         //main game controller 
         GameController = GameObject.Find("GameController");
-        Restart RestartScript = GameController.GetComponent<Restart>();
+        TrainingRestart RestartScript = GameController.GetComponent<TrainingRestart>();
 
 
         xCoord = 0;
@@ -48,32 +48,12 @@ public class StartMarkerSpawn : MonoBehaviour {
             zCoord = -2.44f;
             degree = 180;
         }
-        else if (RestartScript.startPosition == 5)
-        {
-            xCoord = -1.83f;
-            zCoord = 2.44f;
-            degree = 315;
-        }
-        else if (RestartScript.startPosition == 6)
-        {
-            xCoord = 1.83f;
-            zCoord = 2.44f;
-            degree = 45;
-        }
-        else if (RestartScript.startPosition == 7)
-        {
-            xCoord = 1.83f;
-            zCoord = -2.44f;
-            degree = 135;
-        }
-        else { //randnum == 8
-            xCoord = -1.83f;
-            zCoord = -2.44f;
-            degree = 225;
-        }
+        
 
-        this.transform.Rotate(0, degree, 0);
         this.transform.position = new Vector3(xCoord, 0, zCoord);
+        this.transform.Rotate(0, degree, 0);
+        
+
         if (System.IO.File.Exists(markerFile))
         {
             System.IO.File.Delete(markerFile);
