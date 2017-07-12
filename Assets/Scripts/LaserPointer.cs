@@ -25,8 +25,13 @@ public class LaserPointer : MonoBehaviour
      *  2 - Teleporting and turning with directional pad
      *  Any other number - Physically walking and rotating
      */ 
-    private int MoveMode = 0;
+    private const int MoveMode = 0;
     public Transform eyeTransform;
+    public GameObject answerReticlePrefab;
+    private GameObject answerReticle;
+    private Transform answerTeleportReticleTransport;
+    public const ulong MoveButton = SteamVR_Controller.ButtonMask.Touchpad;
+    public const ulong AnswerButton = SteamVR_Controller.ButtonMask.Trigger;
 
     private SteamVR_Controller.Device Controller
     {
@@ -53,17 +58,43 @@ public class LaserPointer : MonoBehaviour
         // Check if the user started moving, taking into account which movement
         // mode they are in
         bool movementInitiated = false;
-        if (MoveMode == 1) {
-            movementInitiated = Controller.GetPress(SteamVR_Controller.ButtonMask.Trigger);
-        } else if (MoveMode == 2) {
-            movementInitiated = Controller.GetPress(SteamVR_Controller.ButtonMask.Touchpad);
+        bool answerInitiated = false;
+        movementInitiated = Controller.GetPress(MoveButton);
+        answerInitiated = Controller.GetPress(AnswerButton);
+
+        // Make sure the player either teleport or answers--not both
+        if (answerInitiated && movementInitiated) {
+            answerInitiated = false;
         }
 
-        if (movementInitiated) {
-            Vector3 initiationOrientation = cameraRigTransform.forward;
-
+        if (movementInitiated){
             // Send out a raycast from the controller
             RaycastHit hit;
+            if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100, teleportMask)){
+                // Point the laser
+                hitPoint = hit.point;
+                ShowLaser(hit);
+
+                //Show teleport reticle
+                reticle.SetActive(true);
+                teleportReticleTransform.position = hitPoint + teleportReticleOffset;
+
+                // Rotate the marker to match new orientation
+                if (MoveMode == 2){
+                    teleportReticleTransform.rotation = Quaternion.Euler(0, cameraRigTransform.eulerAngles.y + GetPlayerRotation(), 0);
+                }
+
+                // If you're in this block, you hit something with the teleport mask
+                shouldTeleport = true;
+            } else {
+                // If you didn't hit the somthing with the teleport mask, turn off the laser
+                laser.SetActive(false);
+                reticle.SetActive(false);
+            }
+        } else if (answerInitiated){
+            // Send out a raycast from the controller
+            RaycastHit hit;
+
             if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100, teleportMask))
             {
                 // Point the laser
@@ -74,11 +105,6 @@ public class LaserPointer : MonoBehaviour
                 reticle.SetActive(true);
                 teleportReticleTransform.position = hitPoint + teleportReticleOffset;
 
-                // Rotate the marker to match new orientation
-                if (MoveMode == 2) {
-                    teleportReticleTransform.rotation = Quaternion.Euler(0, cameraRigTransform.eulerAngles.y + GetPlayerRotation(), 0);
-                }
-                
                 // If you're in this block, you hit something with the teleport mask
                 shouldTeleport = true;
             } else {
@@ -91,11 +117,9 @@ public class LaserPointer : MonoBehaviour
         // Check if the user stopped moving, taking into account which movement
         // mode they are in
         bool movementTerminated = false;
-        if (MoveMode == 1) {
-            movementTerminated = Controller.GetPressUp(SteamVR_Controller.ButtonMask.Trigger);
-        } else if (MoveMode == 2) {
-            movementTerminated = Controller.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad);
-        }
+        bool answerTerminated = false;
+        movementTerminated = Controller.GetPressUp(MoveButton);
+        answerInitiated = Controller.GetPressUp(AnswerButton);
 
         // If the player initiated a teleport where somewhere nice (object with teleport mask)
         // then teleport them there
@@ -110,6 +134,15 @@ public class LaserPointer : MonoBehaviour
 
             // Laser stays for some reason witout this line
             laser.SetActive(false);
+        } else if (shouldTeleport && answerTerminated) {
+            //
+
+            Vector3 answer = Vector3.zero;
+            Vector3 difference = cameraRigTransform.position + headTransform.position;
+            difference.y = 0;
+            answer = hitPoint + difference;
+
+            //
         }
     }
 
