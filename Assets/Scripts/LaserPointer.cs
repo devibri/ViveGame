@@ -25,14 +25,14 @@ public class LaserPointer : MonoBehaviour
      *  2 - Teleporting and turning with directional pad
      *  Any other number - Physically walking and rotating
      */ 
-    private const int MoveMode = 0;
+    private const int MoveMode = 1;
     public Transform eyeTransform;
     public GameObject answerReticlePrefab;
     private GameObject answerReticle;
     private Transform answerTeleportReticleTransform;
     public const ulong MoveButton = SteamVR_Controller.ButtonMask.Touchpad;
     public const ulong AnswerButton = SteamVR_Controller.ButtonMask.Trigger;
-
+    s
     private SteamVR_Controller.Device Controller
     {
         get { return SteamVR_Controller.Input((int)trackedObj.index); }
@@ -53,6 +53,7 @@ public class LaserPointer : MonoBehaviour
         answerTeleportReticleTransform = answerReticle.transform;
         laser.SetActive(false);
         reticle.SetActive(false);
+        answerReticle.SetActive(false);
     }
 
     void Update()

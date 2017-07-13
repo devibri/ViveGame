@@ -5,7 +5,7 @@ using UnityEngine;
 public class TrainingMarkerDestroy : MonoBehaviour {
 
     public TrainingFirstMarkerSpawn otherScript;
-    public SecondMarkerSpawn otherScript2;
+    public TrainingSecondMarkerSpawn otherScript2;
 
     // Use this for initialization
     void Start () {
