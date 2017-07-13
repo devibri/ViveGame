@@ -109,7 +109,7 @@ public class Recordteleport : MonoBehaviour
                 //This should work
                 foreach(GameObject obj in markers)
                 {
-                    if (obj.GetComponent<Renderer>().enabled)
+                    if (obj.activeSelf)
                     {
                         Vector3 oldOrientation = trackedObj.transform.eulerAngles;
                         trackedObj.transform.LookAt(obj.transform.position);
