@@ -96,7 +96,11 @@
      <Compile Include="Assets\Scripts\Restart.cs" />
      <Compile Include="Assets\Scripts\SecondMarkerSpawn.cs" />
      <Compile Include="Assets\Scripts\StartMarkerSpawn.cs" />
+     <Compile Include="Assets\Scripts\TrainingFirstMarkerSpawn.cs" />
+     <Compile Include="Assets\Scripts\TrainingMarkerDestroy.cs" />
      <Compile Include="Assets\Scripts\TrainingRestart.cs" />
+     <Compile Include="Assets\Scripts\TrainingSecondMarkerSpawn.cs" />
+     <Compile Include="Assets\Scripts\TrainingStartMarkerSpawn.cs" />
      <Compile Include="Assets\Scripts\ViveControllerInputTest.cs" />
      <Compile Include="Assets\Scripts\Writeposition.cs" />
      <Compile Include="Assets\Scripts\neither.cs" />

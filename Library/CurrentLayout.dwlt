@@ -19,7 +19,11 @@ MonoBehaviour:
     height: 1117
   m_ShowMode: 4
   m_Title: 
+<<<<<<< HEAD
   m_RootView: {fileID: 8}
+=======
+  m_RootView: {fileID: 6}
+>>>>>>> 58e38901e28c511cbb88e68bef11cd57fbcb69a3
   m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
@@ -92,10 +96,17 @@ MonoBehaviour:
     width: 1920
     height: 1067
   m_MinSize: {x: 683, y: 492}
+<<<<<<< HEAD
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 0
   controlID: 154
 --- !u!114 &5
+=======
+  m_MaxSize: {x: 14004, y: 14042}
+  vertical: 0
+  controlID: 90
+--- !u!114 &3
+>>>>>>> 58e38901e28c511cbb88e68bef11cd57fbcb69a3
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -165,6 +176,7 @@ MonoBehaviour:
     height: 422
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
+<<<<<<< HEAD
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -172,6 +184,15 @@ MonoBehaviour:
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &8
+=======
+  m_ActualView: {fileID: 13}
+  m_Panes:
+  - {fileID: 13}
+  - {fileID: 18}
+  m_Selected: 0
+  m_LastSelected: 1
+--- !u!114 &6
+>>>>>>> 58e38901e28c511cbb88e68bef11cd57fbcb69a3
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -192,7 +213,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 1117
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &9
 MonoBehaviour:
@@ -258,8 +279,13 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
+<<<<<<< HEAD
   controlID: 10
 --- !u!114 &12
+=======
+  controlID: 91
+--- !u!114 &10
+>>>>>>> 58e38901e28c511cbb88e68bef11cd57fbcb69a3
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -378,13 +404,19 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scripts
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\emanuelb\Desktop\ViveGame
+  m_LastProjectPath: C:\Users\avelasco\Downloads\ViveGame
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 22}
+<<<<<<< HEAD
     m_SelectedIDs: 88280000
     m_LastClickedID: 10376
     m_ExpandedIDs: 000000005626000058270000b8270000ac3000002431000074310000243e0000263e0000283e00002a3e000000ca9a3bffffff7f
+=======
+    m_SelectedIDs: fc2e0000
+    m_LastClickedID: 12028
+    m_ExpandedIDs: 00000000f42c0000de2d00003a2e00000037000072370000bc370000c4430000c6430000c8430000ca43000000ca9a3bffffff7f
+>>>>>>> 58e38901e28c511cbb88e68bef11cd57fbcb69a3
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -412,7 +444,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 000000005626000058270000b8270000ac3000002431000074310000243e0000263e0000283e00002a3e0000
+=======
+    m_ExpandedIDs: 00000000f42c0000de2d00003a2e00000037000072370000bc370000c4430000c6430000c8430000ca430000
+>>>>>>> 58e38901e28c511cbb88e68bef11cd57fbcb69a3
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -528,9 +564,13 @@ MonoBehaviour:
     height: 624
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: 0c060000
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: dcfbffff00000000
+=======
+    m_ExpandedIDs: d8faffff00000000
+>>>>>>> 58e38901e28c511cbb88e68bef11cd57fbcb69a3
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
