@@ -12,10 +12,10 @@ public class Move : MonoBehaviour
     void Start()
     {
         currentTime = Time.time;
-        if (System.IO.File.Exists(outputFile))
-        {
-            System.IO.File.Delete(outputFile);
-        }
+        //if (System.IO.File.Exists(outputFile))
+        //{
+        //    System.IO.File.Delete(outputFile);
+        //}
     }
 
     void Update()

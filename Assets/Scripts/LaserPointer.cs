@@ -111,19 +111,18 @@ public class LaserPointer : MonoBehaviour
             System.IO.File.Delete(outputFile);
         }
 
-        if (System.IO.File.Exists(trackpadFile))
-        {
-            System.IO.File.Delete(trackpadFile);
-        }
-        if (System.IO.File.Exists(trackpadFile))
-        {
-            System.IO.File.Delete(trackpadFile);
-        }
-        if (System.IO.File.Exists(responseFile))
-        {
-            System.IO.File.Delete(responseFile);
-            System.IO.File.AppendAllText(responseFile, "CREATED!!!!");
-        }
+        //if (System.IO.File.Exists(trackpadFile))
+        //{
+        //    System.IO.File.Delete(trackpadFile);
+        //}
+        //if (System.IO.File.Exists(trackpadFile))
+        //{
+        //    System.IO.File.Delete(trackpadFile);
+        //}
+        //if (System.IO.File.Exists(responseFile))
+        //{
+        //    System.IO.File.Delete(responseFile);
+        //}
         System.IO.File.AppendAllText(trackpadFile, "Start time:" + Time.time + "\r\n");
 
         // Hide everything
