@@ -192,9 +192,6 @@ public class LaserPointer : MonoBehaviour
                 // Rotate the marker to match new orientation
                 if (MoveMode == 2){
                     reticleTransform.rotation = Quaternion.Euler(0, cameraRigTransform.eulerAngles.y + GetPlayerRotation(), 0);
-
-
-
                 }
 
                 // If you're in this block, you hit something with the teleport mask
@@ -240,14 +237,32 @@ public class LaserPointer : MonoBehaviour
         if (movementTerminated && shouldTeleport) {
             Teleport();
 
-            // If the user is in the trackpad rotation mode
-            // then rotate them
-            if (MoveMode == 2) {
-                Rotate(); 
+            if (MoveMode == 2)
+            {
+                
+                Rotate();
             }
+            
 
-            // Laser stays for some reason witout this line
-            laser.SetActive(false);
+           // If the user is in the trackpad rotation mode
+           // then rotate them
+
+           /*
+
+
+           if (MoveMode == 2) {
+               if (MarkerSelected)
+               {
+                   RotateSnap(marker);
+               }
+               else {
+                   Rotate();
+               }
+
+           }*/
+
+           // Laser stays for some reason witout this line
+           laser.SetActive(false);
             answerReticle.SetActive(false);
         } else if (shouldTeleport && answerTerminated) {
             Debug.Log("TEXT");
@@ -256,6 +271,18 @@ public class LaserPointer : MonoBehaviour
             answerReticle.SetActive(false);
             laser.SetActive(false);
         }
+
+       
+        GameObject startMarker;
+        startMarker = GameObject.Find("StartMarker");
+        reticleTransform.rotation = startMarker.transform.rotation;
+        Debug.Log("Marker rotation is: " + startMarker.transform.rotation.y);
+        Debug.Log("Arrow reticle rotation is: " + reticleTransform.rotation.y);
+
+
+
+
+
     }
 
     private void ShowLaser(RaycastHit hit)
@@ -286,5 +313,10 @@ public class LaserPointer : MonoBehaviour
     void Rotate()
     {
         cameraRigTransform.Rotate(0, GetPlayerRotation(), 0);
+    }
+
+    void RotateSnap(GameObject marker)
+    {  
+        cameraRigTransform.Rotate(0, marker.transform.rotation.y, 0);
     }
 }

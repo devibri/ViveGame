@@ -1,0 +1,12 @@
+Response: (-2.4, 0.1, -7.5) Time: 145.6302
+Response: (-1.7, 0.1, -4.8) Time: 146.6303
+Response: (-1.4, 0.1, -3.5) Time: 181.5699
+Response: (-2.3, 0.1, -6.5) Time: 182.2535
+Response: (-14.8, 0.1, -55.4) Time: 182.6424
+Response: (0.0, 0.1, -1.3) Time: 1.713906
+Response: (-0.1, 0.1, -1.9) Time: 2.267108
+Response: (-0.3, 0.1, -4.2) Time: 2.775409
+Response: (-0.1, 0.1, -2.7) Time: 3.074093
+Response: (-0.1, 0.1, -3.2) Time: 3.603526
+Response: (-0.1, 0.1, -3.3) Time: 3.77916
+Response: (-0.1, 0.1, -2.9) Time: 4.27101
