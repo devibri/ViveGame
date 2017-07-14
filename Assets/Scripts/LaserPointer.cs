@@ -22,6 +22,7 @@ public class LaserPointer : MonoBehaviour
      *  Any other number - Physically walking and rotating
      */ 
     private const int MoveMode = 2;
+    public float RotationThreshold = .1f;
 
     // Prefabs for reticles
     public GameObject answerReticlePrefab;
@@ -60,6 +61,7 @@ public class LaserPointer : MonoBehaviour
     private Transform reticleTransform;
 
     private GameObject[] markers = new GameObject[3];
+    private GameObject currentMarker;
 
     //player position / rotation
     private GameObject camera;
@@ -98,6 +100,8 @@ public class LaserPointer : MonoBehaviour
             reticle = rotateReticle;
             reticleTransform = rotateReticleTransform;
         }
+
+       
 
         //Get markers
         markers[0] = GameObject.Find("StartMarker");
@@ -168,6 +172,7 @@ public class LaserPointer : MonoBehaviour
                 // Point the laser
                 hitPoint = hit.point;
 
+
                 // This snaps to markers
                 foreach (GameObject obj in markers)
                 {
@@ -237,31 +242,13 @@ public class LaserPointer : MonoBehaviour
         if (movementTerminated && shouldTeleport) {
             Teleport();
 
-            if (MoveMode == 2)
+            if (MoveMode == 2 && ReticleAndMarkerSnapped())
             {
-                
-                Rotate();
+                //Rotate();
+                SnapPlayerRotation();
             }
             
-
-           // If the user is in the trackpad rotation mode
-           // then rotate them
-
-           /*
-
-
-           if (MoveMode == 2) {
-               if (MarkerSelected)
-               {
-                   RotateSnap(marker);
-               }
-               else {
-                   Rotate();
-               }
-
-           }*/
-
-           // Laser stays for some reason witout this line
+           // Laser stays for some reason without this line
            laser.SetActive(false);
             answerReticle.SetActive(false);
         } else if (shouldTeleport && answerTerminated) {
@@ -272,17 +259,23 @@ public class LaserPointer : MonoBehaviour
             laser.SetActive(false);
         }
 
-       
-        GameObject startMarker;
-        startMarker = GameObject.Find("StartMarker");
-        reticleTransform.rotation = startMarker.transform.rotation;
-        Debug.Log("Marker rotation is: " + startMarker.transform.rotation.y);
-        Debug.Log("Arrow reticle rotation is: " + reticleTransform.rotation.y);
+
+        SnapReticleRotation();
 
 
 
 
 
+    }
+
+    private GameObject GetCurrentMarker() {
+        for (int i = 0; i < markers.Length; i++) {
+            if (markers[i].GetComponent<Renderer>().enabled) {
+                return markers[i];
+            }
+        }
+
+        return null;
     }
 
     private void ShowLaser(RaycastHit hit)
@@ -315,8 +308,27 @@ public class LaserPointer : MonoBehaviour
         cameraRigTransform.Rotate(0, GetPlayerRotation(), 0);
     }
 
-    void RotateSnap(GameObject marker)
-    {  
-        cameraRigTransform.Rotate(0, marker.transform.rotation.y, 0);
+    bool ReticleAndMarkerSnapped() {
+           return reticleTransform.rotation == currentMarker.transform.rotation;
+    }
+
+    void SnapReticlePosition() {
+   
+    }
+
+    void SnapReticleRotation() {
+        currentMarker = GetCurrentMarker();
+        if (currentMarker != null && Mathf.Abs(reticleTransform.rotation.y) - Mathf.Abs(currentMarker.transform.rotation.y) < RotationThreshold)
+        {
+            reticleTransform.rotation = GetCurrentMarker().transform.rotation;
+        }
+    }
+
+    void SnapPlayerRotation() {
+        cameraRigTransform.rotation = GetCurrentMarker().transform.rotation;
+    }
+
+    void SnapPlayerPosition() {
+
     }
 }
