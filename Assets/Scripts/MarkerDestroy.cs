@@ -6,9 +6,14 @@ public class MarkerDestroy : MonoBehaviour {
 
     public FirstMarkerSpawn otherScript;
     public SecondMarkerSpawn otherScript2;
+    const string timeFile = "Time.txt";
 
     // Use this for initialization
     void Start () {
+        //if (System.IO.File.Exists(timeFile))
+        //{
+        //    System.IO.File.Delete(timeFile);
+        //}
 		
 	}
 	
@@ -21,6 +26,7 @@ public class MarkerDestroy : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Marker"))
         {
+            System.IO.File.AppendAllText(timeFile, "Start marker time: " + Time.time + "\r\n");
             other.gameObject.SetActive(false);
             otherScript.SpawnFirstMarker();
 
@@ -31,7 +37,9 @@ public class MarkerDestroy : MonoBehaviour {
             other.gameObject.SetActive(false);
             otherScript2.SpawnSecondMarker();
         }
-        else if (other.gameObject.CompareTag("SecondMarker")) {
+        else if (other.gameObject.CompareTag("SecondMarker"))
+        {
+            System.IO.File.AppendAllText(timeFile, "Second marker time: " + Time.time + "\r\n");
             other.gameObject.SetActive(false);
         }
 
