@@ -21,8 +21,9 @@ public class LaserPointer : MonoBehaviour
      *  2 - Teleporting and turning with directional pad
      *  Any other number - Physically walking and rotating
      */ 
-    private const int MoveMode = 2;
+    private const int MoveMode = 1;
     public float RotationThreshold = .1f;
+    public float TranslationThreshold = .3f;
 
     // Prefabs for reticles
     public GameObject answerReticlePrefab;
@@ -155,7 +156,7 @@ public class LaserPointer : MonoBehaviour
             currentTime = Time.time;
             if (Controller.GetAxis() != zeroVector)
             {
-                System.IO.File.AppendAllText(trackpadFile, Controller.GetAxis().ToString() + " " + GetPlayerRotation() + "\r\n");
+                System.IO.File.AppendAllText(trackpadFile, Controller.GetAxis().ToString() + " " + GetThumbRotation() + "\r\n");
             }
         }
 
@@ -172,21 +173,9 @@ public class LaserPointer : MonoBehaviour
                 // Point the laser
                 hitPoint = hit.point;
 
-
-                // This snaps to markers
-                foreach (GameObject obj in markers)
-                {
-                    if (obj.activeSelf)
-                    {
-                        Vector3 oldOrientation = trackedObj.transform.eulerAngles;
-                        trackedObj.transform.LookAt(obj.transform.position);
-                        Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100, teleportMask);
-                        trackedObj.transform.eulerAngles = oldOrientation;
-                        hitPoint = hit.point;
-                        break;
-                    }
+                if (Vector3.Magnitude(hitPoint - GetCurrentMarker().transform.position) < TranslationThreshold) {
+                    SnapReticlePosition(hit);
                 }
-
 
                 ShowLaser(hit);
 
@@ -196,7 +185,7 @@ public class LaserPointer : MonoBehaviour
 
                 // Rotate the marker to match new orientation
                 if (MoveMode == 2){
-                    reticleTransform.rotation = Quaternion.Euler(0, cameraRigTransform.eulerAngles.y + GetPlayerRotation(), 0);
+                    reticleTransform.rotation = Quaternion.Euler(0, cameraRigTransform.eulerAngles.y + GetThumbRotation(), 0);
                 }
 
                 // If you're in this block, you hit something with the teleport mask
@@ -242,7 +231,7 @@ public class LaserPointer : MonoBehaviour
         if (movementTerminated && shouldTeleport) {
             Teleport();
 
-            if (MoveMode == 2 && ReticleAndMarkerSnapped())
+            if (MoveMode == 2 && ReticleSnapped())
             {
                 //Rotate();
                 SnapPlayerRotation();
@@ -258,19 +247,12 @@ public class LaserPointer : MonoBehaviour
             answerReticle.SetActive(false);
             laser.SetActive(false);
         }
-
-
         SnapReticleRotation();
-
-
-
-
-
     }
 
     private GameObject GetCurrentMarker() {
         for (int i = 0; i < markers.Length; i++) {
-            if (markers[i].GetComponent<Renderer>().enabled) {
+            if (markers[i].active) {
                 return markers[i];
             }
         }
@@ -291,13 +273,10 @@ public class LaserPointer : MonoBehaviour
     {
         shouldTeleport = false; // Teleport in progress, no need to do it again until the next touchpad release
         reticle.SetActive(false); // Hide reticle
-        Vector3 difference = cameraRigTransform.position - headTransform.position; // Calculate the difference between the center of the virtual room & the player's head
-        difference.y = 0; // Don't change the final position's y position, it should always be equal to that of the hit point
-
-        cameraRigTransform.position = hitPoint + difference; // Change the camera rig position to where the the teleport reticle was. Also add the difference so the new virtual room position is relative to the player position, allowing the player's new position to be exactly where they pointed. (see illustration)
+        cameraRigTransform.position = hitPoint; // Change the camera rig position to where the the teleport reticle was. Also add the difference so the new virtual room position is relative to the player position, allowing the player's new position to be exactly where they pointed. (see illustration)
     }
 
-    float GetPlayerRotation() {
+    float GetThumbRotation() {
         float thumbAngle = Vector2.Angle(Vector2.up, Controller.GetAxis());
         float turnSign = Mathf.Sign(Controller.GetAxis().x);
         return thumbAngle * turnSign;
@@ -305,30 +284,40 @@ public class LaserPointer : MonoBehaviour
 
     void Rotate()
     {
-        cameraRigTransform.Rotate(0, GetPlayerRotation(), 0);
+        cameraRigTransform.Rotate(0, GetThumbRotation(), 0);
     }
 
-    bool ReticleAndMarkerSnapped() {
+    bool ReticleSnapped() {
            return reticleTransform.rotation == currentMarker.transform.rotation;
     }
 
-    void SnapReticlePosition() {
-   
+    void SnapReticlePosition(RaycastHit hit) {
+        foreach (GameObject obj in markers)
+        {
+            if (obj.activeSelf)
+            {
+                Vector3 oldOrientation = trackedObj.transform.eulerAngles;
+                trackedObj.transform.LookAt(obj.transform.position);
+                Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100, teleportMask);
+                trackedObj.transform.eulerAngles = oldOrientation;
+                hitPoint = hit.point;
+                break;
+            }
+        }
+
+        Debug.Log("Marker position: " + GetCurrentMarker().transform.position);
+        Debug.Log("Reticle position: " + reticleTransform.position);
     }
 
     void SnapReticleRotation() {
         currentMarker = GetCurrentMarker();
-        if (currentMarker != null && Mathf.Abs(reticleTransform.rotation.y) - Mathf.Abs(currentMarker.transform.rotation.y) < RotationThreshold)
+        if (currentMarker != null && Mathf.Abs(reticleTransform.rotation.y) - Mathf.Abs(currentMarker.transform.localRotation.y) < RotationThreshold)
         {
-            reticleTransform.rotation = GetCurrentMarker().transform.rotation;
+            reticleTransform.rotation = GetCurrentMarker().transform.localRotation;
         }
     }
 
     void SnapPlayerRotation() {
         cameraRigTransform.rotation = GetCurrentMarker().transform.rotation;
-    }
-
-    void SnapPlayerPosition() {
-
     }
 }
