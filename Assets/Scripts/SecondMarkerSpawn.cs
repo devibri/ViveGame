@@ -28,7 +28,7 @@ public class SecondMarkerSpawn : MonoBehaviour
         arrow2 = GameObject.Find("ringarrow2");
 
         //get random number to adjust distance to second marker
-        randNum = Random.Range(0, 6) / 3.28f; //divide to convert to meter amt
+        randNum = Random.Range(0, 3) / 3.28f; //divide to convert to meter amt
 
         //distance away second marker will be
         distance = randNum;
@@ -66,7 +66,7 @@ public class SecondMarkerSpawn : MonoBehaviour
         this.transform.position = FirstMarker.transform.position;
 
         //moving second marker forward by a certain random amount
-        this.transform.Translate(Vector3.back * (1.524f + distance), Space.Self); //5ft + random amt
+        this.transform.Translate(Vector3.back * (1.219f + distance), Space.Self); //5ft + random amt
 
 
         System.IO.File.AppendAllText(markerFile, "First Marker:" + FirstMarker.transform.position + "\r\n");

@@ -29,7 +29,7 @@ public class FirstMarkerSpawn : MonoBehaviour {
         
 
         //how much distance the first marker will change by, randomly
-        randNum = Random.Range(0, 6) / 3.28f; //divide to convert to meter amt
+        randNum = Random.Range(0, 3) / 3.28f; //divide to convert to meter amt
         //randNum2 = Random.Range(0, 6); //number of options for degree picked 
 
 
@@ -80,7 +80,7 @@ public class FirstMarkerSpawn : MonoBehaviour {
         //now moving firstmarker forward given amount -- setting position to other marker, then moving it forward
         this.transform.position = StartMarker.transform.position;
 
-        this.transform.Translate(Vector3.back * (1.524f + randNum), Space.Self); //5ft + random amt
+        this.transform.Translate(Vector3.back * (1.219f + randNum), Space.Self); //5ft + random amt
 
 
         //changing rotation of firstmarker to the same rotation plus or minus a certain amount

@@ -21,7 +21,7 @@ public class LaserPointer : MonoBehaviour
      *  2 - Teleporting and turning with directional pad
      *  Any other number - Physically walking and rotating
      */ 
-    private const int MoveMode = 0;
+    private const int MoveMode = 2;
     public float RotationThreshold = .1f;
     public float TranslationThreshold = .3f;
 
@@ -118,18 +118,6 @@ public class LaserPointer : MonoBehaviour
             System.IO.File.Delete(outputFile);
         }
 
-        //if (System.IO.File.Exists(trackpadFile))
-        //{
-        //    System.IO.File.Delete(trackpadFile);
-        //}
-        //if (System.IO.File.Exists(trackpadFile))
-        //{
-        //    System.IO.File.Delete(trackpadFile);
-        //}
-        //if (System.IO.File.Exists(responseFile))
-        //{
-        //    System.IO.File.Delete(responseFile);
-        //}
         System.IO.File.AppendAllText(trackpadFile, "Start time:" + Time.time + "\r\n");
 
         // Hide everything
@@ -191,11 +179,7 @@ public class LaserPointer : MonoBehaviour
 
                 if (Vector3.Magnitude(hitPoint - GetCurrentMarker().transform.position) < TranslationThreshold) {
                     SnapReticlePosition(hit);
-                    //SnapReticleRotation();
                 }
-
-
-                
 
                 ShowLaser(hit);
 
@@ -253,7 +237,6 @@ public class LaserPointer : MonoBehaviour
 
             if (MoveMode == 2 && ReticleSnapped())
             {
-                //Rotate();
                 SnapPlayerRotation();
             }
             
@@ -261,19 +244,16 @@ public class LaserPointer : MonoBehaviour
            laser.SetActive(false);
             answerReticle.SetActive(false);
         } else if (shouldTeleport && answerTerminated) {
-            Debug.Log("TEXT");
             // Writes the response to a file
             System.IO.File.AppendAllText(responseFile, "Response: " + answerReticleTransform.position.ToString() + " Time: " + Time.time + "\r\n");
             answerReticle.SetActive(false);
             laser.SetActive(false);
         }
 
-        if (GetCurrentMarker() != null && Vector3.Magnitude(hitPoint - GetCurrentMarker().transform.position) < TranslationThreshold)
+        if (MoveMode == 2 && GetCurrentMarker() != null && Vector3.Magnitude(hitPoint - GetCurrentMarker().transform.position) < TranslationThreshold)
         {
-            //SnapReticlePosition(hit);
             SnapReticleRotation();
         }
-        //SnapReticleRotation();
     }
 
     private GameObject GetCurrentMarker() {
@@ -330,9 +310,6 @@ public class LaserPointer : MonoBehaviour
                 break;
             }
         }
-
-        Debug.Log("Marker position: " + GetCurrentMarker().transform.position);
-        Debug.Log("Reticle position: " + reticleTransform.position);
     }
 
     void SnapReticleRotation() {
