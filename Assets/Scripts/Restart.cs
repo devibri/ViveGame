@@ -8,7 +8,8 @@ public class Restart : MonoBehaviour {
     //START MARKER
     int randNum;
     public int startPosition; //determines which start position was picked
-    static int prevPosition; //determines what the starting position was for last round 
+    static int prevPosition; //determines what the starting position was for last round
+    string[] fileList = { "Marker.txt", "Place.txt", "Response.txt", "Time.txt", "Track.txt" };
 
 
     //FIRST MARKER
@@ -54,6 +55,10 @@ public class Restart : MonoBehaviour {
         {
             //Debug.Log("Space");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            foreach(string file in fileList)
+            {
+                System.IO.File.AppendAllText(file, "-------New Trial--------\r\n");
+            }
         }
 
     }

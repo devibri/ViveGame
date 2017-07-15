@@ -21,7 +21,7 @@ public class LaserPointer : MonoBehaviour
      *  2 - Teleporting and turning with directional pad
      *  Any other number - Physically walking and rotating
      */ 
-    private const int MoveMode = 2;
+    private const int MoveMode = 0;
     public float RotationThreshold = .1f;
     public float TranslationThreshold = .3f;
 
@@ -40,6 +40,8 @@ public class LaserPointer : MonoBehaviour
     const string outputFile = "Teleport.txt";
     const string trackpadFile = "Track.txt";
     const string responseFile = "Response.txt";
+
+    char[] delimiters = { '\\' };
 
     // Vector when you're not touching it
     Vector2 zeroVector = new Vector2(0.0f, 0.0f);
@@ -144,7 +146,21 @@ public class LaserPointer : MonoBehaviour
         //cameraRigTransform.forward = camera.transform.forward;
 
 
+        if (Input.GetKeyDown( KeyCode.M))
+        {
+            string[] fileList = System.IO.Directory.GetFiles(System.IO.Directory.GetCurrentDirectory(), "*.txt");
+            int i = 0;
+            for (; System.IO.Directory.Exists(i.ToString() + "_" + MoveMode.ToString()); i++)
+            {}
+            System.IO.Directory.CreateDirectory(i.ToString() + "_" + MoveMode.ToString());
+            foreach(string file in fileList)
+            {
 
+                string[] splitFile = file.Split(delimiters);
+                Debug.Log(System.IO.Directory.GetCurrentDirectory() + "\\" + i.ToString() + "_" + MoveMode.ToString()+ "\\" +  splitFile[splitFile.Length - 1]);
+                System.IO.File.Move(file, System.IO.Directory.GetCurrentDirectory() + "\\" + i.ToString() + "_" + MoveMode.ToString() + "\\" + splitFile[splitFile.Length - 1]);
+            }
+        }
         // Check if the user started moving, taking into account which movement
         // mode they are in
         bool movementInitiated = false;
@@ -156,7 +172,7 @@ public class LaserPointer : MonoBehaviour
             currentTime = Time.time;
             if (Controller.GetAxis() != zeroVector)
             {
-                System.IO.File.AppendAllText(trackpadFile, Controller.GetAxis().ToString() + " " + GetThumbRotation() + "\r\n");
+                System.IO.File.AppendAllText(trackpadFile,"Time:" + Time.time + " Axis vector:" +  Controller.GetAxis().ToString() + " Thumbrotation:" + GetThumbRotation() + "\r\n");
             }
         }
 
@@ -252,7 +268,7 @@ public class LaserPointer : MonoBehaviour
             laser.SetActive(false);
         }
 
-        if (Vector3.Magnitude(hitPoint - GetCurrentMarker().transform.position) < TranslationThreshold)
+        if (GetCurrentMarker() != null && Vector3.Magnitude(hitPoint - GetCurrentMarker().transform.position) < TranslationThreshold)
         {
             //SnapReticlePosition(hit);
             SnapReticleRotation();

@@ -1,0 +1,7 @@
+Starting Marker:(1.8, 0.0, 0.0)
+First Marker:(0.3, 0.0, 0.0)
+Second Marker:(-0.3, 0.0, 1.7)
+-------New Trial--------Starting Marker:(-1.8, 0.0, 0.0)
+First Marker:(0.0, 0.0, 0.0)
+Second Marker:(1.4, 0.0, 1.2)
+-------New Trial--------Starting Marker:(0.0, 0.0, -2.4)

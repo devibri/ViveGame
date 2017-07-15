@@ -1,0 +1,3 @@
+Response: (-1.2, 0.1, -0.9) Time: 21.57266
+-------New Trial--------Response: (-2.4, 0.1, 3.0) Time: 44.74513
+-------New Trial--------Response: (-2.8, 0.1, 0.3) Time: 68.03695

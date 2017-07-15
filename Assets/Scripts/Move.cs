@@ -22,7 +22,7 @@ public class Move : MonoBehaviour
     {
         if (Time.time - currentTime > 0.2f)
         {
-            System.IO.File.AppendAllText(outputFile, eyes.GetComponent<Transform>().position + " " + GetComponent<Transform>().position + " " + eyes.GetComponent<Transform>().eulerAngles.ToString() + "\r\n");
+            System.IO.File.AppendAllText(outputFile, "Time:" + Time.time + " Eyes position:" + eyes.GetComponent<Transform>().position + " Camera rig position:" + GetComponent<Transform>().position + " Eyes rotation:" + eyes.GetComponent<Transform>().eulerAngles.ToString() + "\r\n");
             currentTime = Time.time;
         }
     }
