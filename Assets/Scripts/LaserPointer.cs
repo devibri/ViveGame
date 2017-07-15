@@ -21,7 +21,7 @@ public class LaserPointer : MonoBehaviour
      *  2 - Teleporting and turning with directional pad
      *  Any other number - Physically walking and rotating
      */ 
-    private const int MoveMode = 1;
+    private const int MoveMode = 2;
     public float RotationThreshold = .1f;
     public float TranslationThreshold = .3f;
 
@@ -175,7 +175,11 @@ public class LaserPointer : MonoBehaviour
 
                 if (Vector3.Magnitude(hitPoint - GetCurrentMarker().transform.position) < TranslationThreshold) {
                     SnapReticlePosition(hit);
+                    //SnapReticleRotation();
                 }
+
+
+                
 
                 ShowLaser(hit);
 
@@ -247,7 +251,13 @@ public class LaserPointer : MonoBehaviour
             answerReticle.SetActive(false);
             laser.SetActive(false);
         }
-        SnapReticleRotation();
+
+        if (Vector3.Magnitude(hitPoint - GetCurrentMarker().transform.position) < TranslationThreshold)
+        {
+            //SnapReticlePosition(hit);
+            SnapReticleRotation();
+        }
+        //SnapReticleRotation();
     }
 
     private GameObject GetCurrentMarker() {

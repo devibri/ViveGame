@@ -79,3 +79,8 @@ Start time:71.80903
 Start time:72.38718
 Start time:72.76451
 Start time:73.17614
+Start time:0
+Start marker time: 3.877778
+Start time:0
+Start marker time: 5.266667
+Second marker time: 8.288889
