@@ -1,6 +1,0 @@
-Start time:0.2180605
-Time:8.643219 Axis vector:(1.0, 0.3) Thumbrotation:75.08378
-Time:8.743743 Axis vector:(1.0, 0.3) Thumbrotation:74.93731
-Time:8.84411 Axis vector:(1.0, 0.3) Thumbrotation:73.25703
--------New Trial--------
-Start time:18.31176

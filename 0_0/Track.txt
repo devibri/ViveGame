@@ -1,10 +1,130 @@
-Start time:0.1244229
--------New Trial--------Start time:26.37255
-Time:27.9903 Axis vector:(-0.4, -0.4) Thumbrotation:-135.9575
-Time:28.09066 Axis vector:(-0.3, -0.3) Thumbrotation:-140.4878
-Time:28.19104 Axis vector:(-0.2, -0.2) Thumbrotation:-130.8639
-Time:28.29153 Axis vector:(-0.2, -0.2) Thumbrotation:-125.5071
-Time:28.3923 Axis vector:(-0.2, -0.1) Thumbrotation:-115.3964
-Time:28.49296 Axis vector:(-0.2, -0.1) Thumbrotation:-112.5211
-Time:28.59344 Axis vector:(-0.2, -0.1) Thumbrotation:-114.4266
--------New Trial--------Start time:48.42589
+Start time:0.1752902
+Time:6.524029 Axis vector:(0.1, 0.7) Thumbrotation:10.50983
+Time:6.636168 Axis vector:(0.1, 0.7) Thumbrotation:7.961316
+Time:6.747099 Axis vector:(0.1, 0.7) Thumbrotation:6.317952
+Time:6.847741 Axis vector:(0.1, 0.7) Thumbrotation:5.087349
+Time:6.948275 Axis vector:(0.0, 0.7) Thumbrotation:3.189359
+Time:7.048731 Axis vector:(0.0, 0.7) Thumbrotation:1.791222
+Time:7.149182 Axis vector:(0.0, 0.7) Thumbrotation:1.177195
+Time:7.249833 Axis vector:(0.0, 0.7) Thumbrotation:0.9249271
+Time:7.350345 Axis vector:(0.0, 0.7) Thumbrotation:0.8047857
+Time:7.45076 Axis vector:(0.0, 0.7) Thumbrotation:0.7707559
+Time:7.551259 Axis vector:(0.0, 0.7) Thumbrotation:0.9487386
+Time:7.65182 Axis vector:(0.0, 0.7) Thumbrotation:1.170861
+Time:7.752687 Axis vector:(0.0, 0.7) Thumbrotation:1.352195
+Time:7.858772 Axis vector:(0.0, 0.7) Thumbrotation:1.461927
+Time:7.964509 Axis vector:(0.0, 0.7) Thumbrotation:1.496194
+Time:8.065107 Axis vector:(0.0, 0.7) Thumbrotation:1.506102
+Time:8.165648 Axis vector:(0.0, 0.6) Thumbrotation:1.250857
+Time:8.266356 Axis vector:(0.0, 0.6) Thumbrotation:0.7465102
+Time:8.366678 Axis vector:(0.0, 0.6) Thumbrotation:0.1532334
+Time:8.46728 Axis vector:(0.0, 0.6) Thumbrotation:-0.5051297
+Time:8.567751 Axis vector:(0.0, 0.6) Thumbrotation:-0.7306137
+Time:8.668451 Axis vector:(0.0, 0.6) Thumbrotation:-0.7462481
+Time:8.76898 Axis vector:(0.0, 0.6) Thumbrotation:-0.7383398
+Time:8.869405 Axis vector:(0.0, 0.6) Thumbrotation:-0.7047113
+Time:8.970046 Axis vector:(0.0, 0.6) Thumbrotation:-0.616438
+Time:9.078959 Axis vector:(0.0, 0.6) Thumbrotation:-0.324455
+Time:9.182113 Axis vector:(0.0, 0.6) Thumbrotation:0
+Time:9.282891 Axis vector:(0.0, 0.6) Thumbrotation:0.2934199
+Time:9.383398 Axis vector:(0.0, 0.6) Thumbrotation:0.2873554
+Time:9.483678 Axis vector:(0.0, 0.6) Thumbrotation:0.2036718
+Time:9.584384 Axis vector:(0.0, 0.6) Thumbrotation:0.1251145
+Time:9.684819 Axis vector:(0.0, 0.6) Thumbrotation:0.1724585
+Time:9.785331 Axis vector:(0.0, 0.6) Thumbrotation:0.2661444
+Time:9.88649 Axis vector:(0.0, 0.6) Thumbrotation:0.3409232
+Time:9.997521 Axis vector:(0.0, 0.6) Thumbrotation:0.2158
+Time:10.09812 Axis vector:(0.0, 0.6) Thumbrotation:0.1083524
+Time:10.19867 Axis vector:(0.0, 0.6) Thumbrotation:0.02797646
+Time:10.29938 Axis vector:(0.0, 0.6) Thumbrotation:-0.06852804
+Time:10.39973 Axis vector:(0.0, 0.6) Thumbrotation:-0.1866263
+Time:10.50025 Axis vector:(0.0, 0.6) Thumbrotation:-0.2776587
+Time:10.60094 Axis vector:(0.0, 0.6) Thumbrotation:-0.3183671
+Time:10.70139 Axis vector:(0.0, 0.6) Thumbrotation:-0.3071049
+Time:10.80176 Axis vector:(0.0, 0.6) Thumbrotation:-0.2533378
+Time:10.90241 Axis vector:(0.0, 0.6) Thumbrotation:-0.2148914
+Time:11.00289 Axis vector:(0.0, 0.6) Thumbrotation:-0.2668786
+Time:11.10337 Axis vector:(0.0, 0.6) Thumbrotation:-0.289391
+Time:11.20392 Axis vector:(0.0, 0.6) Thumbrotation:-0.3961419
+Time:11.30437 Axis vector:(0.0, 0.6) Thumbrotation:-0.5406791
+Time:11.40504 Axis vector:(0.0, 0.6) Thumbrotation:-0.6974546
+Time:11.50581 Axis vector:(0.0, 0.6) Thumbrotation:-0.7925354
+Time:11.606 Axis vector:(0.0, 0.6) Thumbrotation:-0.742568
+Time:11.70663 Axis vector:(0.0, 0.6) Thumbrotation:-0.5699261
+Time:11.80703 Axis vector:(0.0, 0.6) Thumbrotation:-0.2074791
+Time:11.90756 Axis vector:(0.0, 0.6) Thumbrotation:0.1735894
+Time:12.00811 Axis vector:(0.0, 0.6) Thumbrotation:0.5685511
+Time:12.10871 Axis vector:(0.0, 0.6) Thumbrotation:0.9759852
+Time:12.20931 Axis vector:(0.0, 0.6) Thumbrotation:1.152839
+Time:12.31049 Axis vector:(0.0, 0.6) Thumbrotation:1.207069
+Time:12.4216 Axis vector:(0.0, 0.6) Thumbrotation:1.457234
+Time:12.52203 Axis vector:(0.0, 0.6) Thumbrotation:1.593359
+Time:12.62302 Axis vector:(0.0, 0.6) Thumbrotation:1.754574
+Time:12.72343 Axis vector:(0.0, 0.6) Thumbrotation:1.858042
+Time:12.82349 Axis vector:(0.0, 0.6) Thumbrotation:1.998216
+Time:12.92398 Axis vector:(0.0, 0.6) Thumbrotation:2.108679
+Time:13.02468 Axis vector:(0.0, 0.6) Thumbrotation:2.212932
+Time:13.12514 Axis vector:(0.0, 0.6) Thumbrotation:2.319
+Time:13.22557 Axis vector:(0.0, 0.6) Thumbrotation:2.510766
+Time:13.32619 Axis vector:(0.0, 0.6) Thumbrotation:2.825562
+Time:13.42652 Axis vector:(0.0, 0.6) Thumbrotation:3.118662
+Time:13.52708 Axis vector:(0.0, 0.6) Thumbrotation:3.32225
+Time:13.62771 Axis vector:(0.0, 0.6) Thumbrotation:3.632163
+Time:13.72848 Axis vector:(0.0, 0.6) Thumbrotation:3.96936
+Time:13.82866 Axis vector:(0.0, 0.6) Thumbrotation:4.181372
+Time:13.92964 Axis vector:(0.0, 0.6) Thumbrotation:4.331783
+Time:14.02993 Axis vector:(0.0, 0.6) Thumbrotation:4.430847
+Time:14.13052 Axis vector:(0.0, 0.5) Thumbrotation:4.481963
+Time:14.23079 Axis vector:(0.0, 0.5) Thumbrotation:4.497624
+Time:14.33149 Axis vector:(0.0, 0.6) Thumbrotation:4.534621
+Time:14.43189 Axis vector:(0.0, 0.6) Thumbrotation:4.670302
+Time:14.53258 Axis vector:(0.0, 0.6) Thumbrotation:4.838372
+Time:14.63295 Axis vector:(0.0, 0.6) Thumbrotation:4.978742
+Time:14.73345 Axis vector:(0.0, 0.6) Thumbrotation:5.024455
+Time:14.83422 Axis vector:(0.0, 0.6) Thumbrotation:5.025663
+Time:14.93454 Axis vector:(0.1, 0.6) Thumbrotation:5.029132
+Time:15.03515 Axis vector:(0.1, 0.6) Thumbrotation:5.025858
+Time:15.13767 Axis vector:(0.1, 0.6) Thumbrotation:5.008482
+Time:15.24742 Axis vector:(0.1, 0.6) Thumbrotation:5.009811
+Time:15.34781 Axis vector:(0.1, 0.6) Thumbrotation:5.061054
+Time:15.44846 Axis vector:(0.1, 0.6) Thumbrotation:5.12174
+Time:15.54888 Axis vector:(0.1, 0.6) Thumbrotation:5.149172
+Time:15.6494 Axis vector:(0.1, 0.6) Thumbrotation:5.145899
+Time:15.74999 Axis vector:(0.1, 0.6) Thumbrotation:5.127437
+Time:15.85048 Axis vector:(0.1, 0.6) Thumbrotation:5.107797
+Time:15.95109 Axis vector:(0.1, 0.6) Thumbrotation:5.106339
+Time:16.05162 Axis vector:(0.1, 0.6) Thumbrotation:5.137591
+Time:16.15204 Axis vector:(0.1, 0.6) Thumbrotation:5.188218
+Time:16.25272 Axis vector:(0.1, 0.6) Thumbrotation:5.23686
+Time:16.35343 Axis vector:(0.1, 0.6) Thumbrotation:5.281532
+Time:16.4537 Axis vector:(0.1, 0.6) Thumbrotation:5.28487
+Time:16.55422 Axis vector:(0.1, 0.6) Thumbrotation:5.274441
+Time:16.6549 Axis vector:(0.1, 0.6) Thumbrotation:5.244412
+Time:16.75529 Axis vector:(0.1, 0.6) Thumbrotation:5.024767
+Time:16.85598 Axis vector:(0.0, 0.6) Thumbrotation:4.339734
+Time:16.95626 Axis vector:(0.0, 0.6) Thumbrotation:3.044654
+Time:17.05682 Axis vector:(0.0, 0.7) Thumbrotation:-0.360452
+Time:17.15756 Axis vector:(0.0, 0.8) Thumbrotation:-1.426973
+Time:17.25786 Axis vector:(0.0, 0.8) Thumbrotation:-1.896717
+-------New Trial--------
+Start time:23.54922
+-------New Trial--------
+Start time:38.07017
+-------New Trial--------
+Start time:53.69077
+-------New Trial--------
+Start time:68.56583
+-------New Trial--------
+Start time:82.65716
+-------New Trial--------
+Start time:98.56042
+-------New Trial--------
+Start time:113.4479
+-------New Trial--------
+Start time:127.5286
+-------New Trial--------
+Start time:136.9057
+-------New Trial--------
+Start time:155.8596
+-------New Trial--------
+Start time:172.8156

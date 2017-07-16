@@ -80,7 +80,7 @@ public class FirstMarkerSpawn : MonoBehaviour {
         //now moving firstmarker forward given amount -- setting position to other marker, then moving it forward
         this.transform.position = StartMarker.transform.position;
 
-        this.transform.Translate(Vector3.back * (1.219f + randNum), Space.Self); //5ft + random amt
+        this.transform.Translate(Vector3.back * (.914f + randNum), Space.Self); //5ft + random amt
 
 
         //changing rotation of firstmarker to the same rotation plus or minus a certain amount

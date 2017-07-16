@@ -1,5 +1,0 @@
-Start time:0
-Start marker time: 7.144444
-Second marker time: 14.16667
--------New Trial--------
-Start time:18.31176
