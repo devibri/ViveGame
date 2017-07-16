@@ -26,7 +26,7 @@ public class TrainingFirstMarkerSpawn : MonoBehaviour {
         
 
         //how much distance the first marker will change by, randomly
-        randNum = Random.Range(0, 6) / 3.28f; //divide to convert to meter amt
+        randNum = Random.Range(0, 3) / 3.28f; //divide to convert to meter amt
 
         //start marker
         StartMarker = GameObject.Find("StartMarker");
@@ -73,7 +73,7 @@ public class TrainingFirstMarkerSpawn : MonoBehaviour {
 
 
 
-        this.transform.Translate(Vector3.back * (1.524f + randNum), Space.Self); //5ft + random amt
+        this.transform.Translate(Vector3.back * (1.219f + randNum), Space.Self); //3ft + random amt
 
 
         

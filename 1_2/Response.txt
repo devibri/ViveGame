@@ -1,0 +1,34 @@
+Response: (3.1, 0.1, -3.7) Time: 13.22935
+Response: (3.1, 0.1, -3.7) Time: 14.4583
+Response: (1.3, 0.1, -1.1) Time: 14.87135
+Response: (-2.7, 0.1, -5.4) Time: 12.1642
+Response: (-4.5, 0.1, -6.0) Time: 12.35378
+Response: (-2.7, 0.1, -5.7) Time: 12.5327
+Response: (42.1, 0.1, -776.8) Time: 123.5819
+Response: (-1.0, 0.1, 0.4) Time: 5.854713
+Response: (-2.2, 0.1, 3.1) Time: 34.1286
+Response: (-1.3, 0.1, -0.8) Time: 49.47484
+Response: (1.6, 0.1, 0.1) Time: 22.75748
+-------New Trial--------
+Response: (0.3, 0.1, -2.2) Time: 41.27524
+-------New Trial--------
+Response: (-1.5, 0.1, -2.9) Time: 54.95535
+-------New Trial--------
+Response: (2.2, 0.1, -2.6) Time: 72.35493
+-------New Trial--------
+-------New Trial--------
+-------New Trial--------
+Response: (-1.8, 0.1, 3.1) Time: 115.7777
+-------New Trial--------
+Response: (2.2, 0.1, 3.4) Time: 131.3813
+Response: (3.4, 0.1, 0.7) Time: 136.653
+Response: (3.4, 0.1, 0.7) Time: 138.6749
+Response: (6.1, 0.1, 3.6) Time: 160.9586
+-------New Trial--------
+-------New Trial--------
+-------New Trial--------
+-------New Trial--------
+-------New Trial--------
+-------New Trial--------
+-------New Trial--------
+Response: (-1.9, 0.1, 0.3) Time: 241.7788

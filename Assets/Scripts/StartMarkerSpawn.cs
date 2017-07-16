@@ -24,12 +24,13 @@ public class StartMarkerSpawn : MonoBehaviour {
 
         xCoord = 0;
         zCoord = 0;
-        
+
+        /*
 
         //depending on random roll, set start marker to start position and rotation towards origin
         if (RestartScript.startPosition == 1)
         {
-            xCoord = -1.83f;
+            xCoord = -1.828f;
             degree = 270;
 
         }
@@ -40,7 +41,7 @@ public class StartMarkerSpawn : MonoBehaviour {
         }
         else if (RestartScript.startPosition == 3)
         {
-            xCoord = 1.83f;
+            xCoord = 1.828f;
             degree = 90;
         }
         else if (RestartScript.startPosition == 4)
@@ -50,27 +51,79 @@ public class StartMarkerSpawn : MonoBehaviour {
         }
         else if (RestartScript.startPosition == 5)
         {
-            xCoord = -1.83f;
+            xCoord = -1.828f;
             zCoord = 2.44f;
             degree = 315;
         }
         else if (RestartScript.startPosition == 6)
         {
-            xCoord = 1.83f;
+            xCoord = 1.828f;
             zCoord = 2.44f;
             degree = 45;
         }
         else if (RestartScript.startPosition == 7)
         {
-            xCoord = 1.83f;
+            xCoord = 1.828f;
             zCoord = -2.44f;
             degree = 135;
         }
         else { //randnum == 8
-            xCoord = -1.83f;
+            xCoord = -1.828f;
             zCoord = -2.44f;
             degree = 225;
+        }*/
+
+        
+
+        //depending on random roll, set start marker to start position and rotation towards origin
+        if (RestartScript.startPosition == 1)
+        {
+            xCoord = -1.52f;
+            degree = 270;
+
         }
+        else if (RestartScript.startPosition == 2)
+        {
+            zCoord = 2.13f;
+            degree = 0;
+        }
+        else if (RestartScript.startPosition == 3)
+        {
+            xCoord = 1.52f;
+            degree = 90;
+        }
+        else if (RestartScript.startPosition == 4)
+        {
+            zCoord = -2.13f;
+            degree = 180;
+        }
+        else if (RestartScript.startPosition == 5)
+        {
+            xCoord = -1.52f;
+            zCoord = 2.13f;
+            degree = 315;
+        }
+        else if (RestartScript.startPosition == 6)
+        {
+            xCoord = 1.52f;
+            zCoord = 2.13f;
+            degree = 45;
+        }
+        else if (RestartScript.startPosition == 7)
+        {
+            xCoord = 1.52f;
+            zCoord = -2.13f;
+            degree = 135;
+        }
+        else { //randnum == 8
+            xCoord = -1.52f;
+            zCoord = -2.13f;
+            degree = 225;
+        }
+
+
+
+        //closer-in start positions by 2 ft
 
         this.transform.Rotate(0, degree, 0);
         this.transform.position = new Vector3(xCoord, 0, zCoord);

@@ -29,24 +29,24 @@ public class TrainingStartMarkerSpawn : MonoBehaviour {
         //depending on random roll, set start marker to start position and rotation towards origin
         if (RestartScript.startPosition == 1)
         {
-            xCoord = -1.83f;
+            xCoord = -1.52f;
             degree = 270;
 
         }
         else if (RestartScript.startPosition == 2)
         {
-            zCoord = 2.44f;
-            degree = 0;
+            xCoord = -1.52f;
+            degree = 270;
         }
         else if (RestartScript.startPosition == 3)
         {
-            xCoord = 1.83f;
+            xCoord = 1.52f;
             degree = 90;
         }
         else if (RestartScript.startPosition == 4)
         {
-            zCoord = -2.44f;
-            degree = 180;
+            xCoord = 1.52f;
+            degree = 90;
         }
         
 
