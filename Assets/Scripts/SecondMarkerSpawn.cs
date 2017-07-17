@@ -12,8 +12,10 @@ public class SecondMarkerSpawn : MonoBehaviour
     Renderer rend;
     Renderer rend2;
     float firstDegree; //degree of first arrow
-    float randNum; //determines how much forward the second marker spawns
+    int randNum; //determines how much forward the second marker spawns
+    float length; //the amount past the baseline that the marker is moved forward
     private const string markerFile = "Marker.txt";
+    float[] lengthArray = new float[] { 0, .5f, 1 };
 
 
 
@@ -28,7 +30,8 @@ public class SecondMarkerSpawn : MonoBehaviour
         arrow2 = GameObject.Find("ringarrow2");
 
         //get random number to adjust distance to second marker
-        randNum = Random.Range(0, 3) / 3.28f; //divide to convert to meter amt
+        randNum = Random.Range(0, lengthArray.Length);
+        length = lengthArray[randNum] / 3.28f; //divide to convert to meter amt
 
        
         rend = this.GetComponent<Renderer>();
@@ -61,7 +64,7 @@ public class SecondMarkerSpawn : MonoBehaviour
         this.transform.position = FirstMarker.transform.position;
 
         //moving second marker forward by a certain random amount
-        this.transform.Translate(Vector3.back * (1.219f), Space.Self); //4ft + random amt
+        this.transform.Translate(Vector3.back * (1.22f + length), Space.Self); //4ft + random amt 
 
 
         System.IO.File.AppendAllText(markerFile, "First Marker:" + FirstMarker.transform.position + "\r\n");

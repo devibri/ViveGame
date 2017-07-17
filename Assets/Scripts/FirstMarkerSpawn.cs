@@ -14,11 +14,12 @@ public class FirstMarkerSpawn : MonoBehaviour {
     int startDegree; //degree of start arrow
     public static float degree; //degree of first arrow
     float currentRotation;
-    float randNum; //determines which random length is picked
-    //float randNum2; //determines which random degree is picked
+    int randNum; //determines which random length is picked
+    float length;
 
     //int[] degreeChange = new int[] { -70, -42, -14, 14, 42, 70 }; //degrees plus or minus the current heading -- change this to change angles of triangles 
 
+    float[] lengthArray = new float[] { 0, .5f, 1 };
 
 
     void Start ()
@@ -26,10 +27,11 @@ public class FirstMarkerSpawn : MonoBehaviour {
         
         this.transform.position = new Vector3(10, 0, 10);
 
-        
+        randNum = Random.Range(0, lengthArray.Length);
+        length = lengthArray[randNum] / 3.28f; //divide to convert to meter amt
 
         //how much distance the first marker will change by, randomly
-        randNum = Random.Range(0, 3) / 3.28f; //divide to convert to meter amt
+        //randNum = Random.Range(0, 2) / 3.28f; //divide to convert to meter amt
         //randNum2 = Random.Range(0, 6); //number of options for degree picked 
 
 
@@ -80,7 +82,7 @@ public class FirstMarkerSpawn : MonoBehaviour {
         //now moving firstmarker forward given amount -- setting position to other marker, then moving it forward
         this.transform.position = StartMarker.transform.position;
 
-        this.transform.Translate(Vector3.back * (1.219f + randNum), Space.Self); //4ft + random amt
+        this.transform.Translate(Vector3.back * (1.524f + length ), Space.Self); //4ft + random amt
 
 
         //changing rotation of firstmarker to the same rotation plus or minus a certain amount
