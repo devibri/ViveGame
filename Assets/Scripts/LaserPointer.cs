@@ -22,9 +22,7 @@ public class LaserPointer : MonoBehaviour
      *  2 - Teleporting and turning with directional pad
      *  Any other number - Physically walking and rotating
      */
-    private const int MoveMode = 2;
-    public float RotationThreshold = .1f;
-    public float TranslationThreshold = .3f;
+    private const int MoveMode = 0;
 
     // Prefabs for reticles
     public GameObject answerReticlePrefab;
@@ -59,6 +57,7 @@ public class LaserPointer : MonoBehaviour
     // Buttons used
     public const ulong MoveButton = SteamVR_Controller.ButtonMask.Touchpad;
     public const ulong AnswerButton = SteamVR_Controller.ButtonMask.Trigger;
+    public KeyCode MoveFileButton = KeyCode.M;
 
     // Reticle actually being used and its transform
     private GameObject reticle;
@@ -132,27 +131,15 @@ public class LaserPointer : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(MoveFileButton))
         {
-            string[] fileList = System.IO.Directory.GetFiles(System.IO.Directory.GetCurrentDirectory(), "*.txt");
-            int i = 0;
-            for (; System.IO.Directory.Exists(i.ToString() + "_" + MoveMode.ToString()); i++)
-            { }
-            System.IO.Directory.CreateDirectory(i.ToString() + "_" + MoveMode.ToString());
-            foreach (string file in fileList)
-            {
-
-                string[] splitFile = file.Split(delimiters);
-                Debug.Log(System.IO.Directory.GetCurrentDirectory() + "\\" + i.ToString() + "_" + MoveMode.ToString() + "\\" + splitFile[splitFile.Length - 1]);
-                System.IO.File.Move(file, System.IO.Directory.GetCurrentDirectory() + "\\" + i.ToString() + "_" + MoveMode.ToString() + "\\" + splitFile[splitFile.Length - 1]);
-            }
+            MoveFiles();
         }
         // Check if the user started moving, taking into account which movement
         // mode they are in
-        bool movementInitiated = false;
-        bool answerInitiated = false;
-        movementInitiated = Controller.GetPress(MoveButton);
-        answerInitiated = Controller.GetPress(AnswerButton);
+        bool movementInitiated = Controller.GetPress(MoveButton);
+        bool answerInitiated = Controller.GetPress(AnswerButton);
+        
         if (Time.time - currentTime > 0.1f)
         {
             currentTime = Time.time;
@@ -169,7 +156,7 @@ public class LaserPointer : MonoBehaviour
             answerInitiated = false;
         }
 
-        if (movementInitiated)
+        if (movementInitiated && (MoveMode == 1 || MoveMode == 2))
         {
             // Send out a raycast from the controller
             RaycastHit hit;
@@ -191,9 +178,7 @@ public class LaserPointer : MonoBehaviour
 
                 // If you're in this block, you hit something with the teleport mask
                 shouldTeleport = true;
-            }
-            else
-            {
+            } else {
                 // If you didn't hit the somthing with the teleport mask, turn off the laser
                 laser.SetActive(false);
                 reticle.SetActive(false);
@@ -228,14 +213,12 @@ public class LaserPointer : MonoBehaviour
 
         // Check if the user stopped moving, taking into account which movement
         // mode they are in
-        bool movementTerminated = false;
-        bool answerTerminated = false;
-        movementTerminated = Controller.GetPressUp(MoveButton);
-        answerTerminated = Controller.GetPressUp(AnswerButton);
+        bool movementTerminated = Controller.GetPressUp(MoveButton);
+        bool answerTerminated = Controller.GetPressUp(AnswerButton);
 
         // If the player initiated a teleport where somewhere nice (object with teleport mask)
         // then teleport them there
-        if (movementTerminated && shouldTeleport)
+        if (movementTerminated && shouldTeleport && (MoveMode == 1 || MoveMode == 2))
         {
 
             if (MoveMode == 2)
@@ -244,8 +227,6 @@ public class LaserPointer : MonoBehaviour
             }
 
             Teleport();
-
-
 
             // Laser stays for some reason without this line
             laser.SetActive(false);
@@ -318,5 +299,20 @@ public class LaserPointer : MonoBehaviour
         angle *= 180 / Mathf.PI;
 
         return angle;
+    }
+
+    void MoveFiles() {
+        string[] fileList = System.IO.Directory.GetFiles(System.IO.Directory.GetCurrentDirectory(), "*.txt");
+        int i = 0;
+        for (; System.IO.Directory.Exists(i.ToString() + "_" + MoveMode.ToString()); i++)
+        { }
+        System.IO.Directory.CreateDirectory(i.ToString() + "_" + MoveMode.ToString());
+        foreach (string file in fileList)
+        {
+
+            string[] splitFile = file.Split(delimiters);
+            Debug.Log(System.IO.Directory.GetCurrentDirectory() + "\\" + i.ToString() + "_" + MoveMode.ToString() + "\\" + splitFile[splitFile.Length - 1]);
+            System.IO.File.Move(file, System.IO.Directory.GetCurrentDirectory() + "\\" + i.ToString() + "_" + MoveMode.ToString() + "\\" + splitFile[splitFile.Length - 1]);
+        }
     }
 }

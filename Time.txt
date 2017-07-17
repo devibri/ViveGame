@@ -600,3 +600,22 @@ Start time:14.4558
 Start time:19.75648
 Start marker time: 23.04445
 Second marker time: 28.23333
+Start time:0
+-------New Trial--------
+Start time:7.055882
+Start time:0
+-------New Trial--------
+Start time:11.59549
+Start marker time: 14.48889
+Second marker time: 24.24445
+Start time:0
+-------New Trial--------
+Start time:4.773482
+Start marker time: 7.222222
+Second marker time: 12.26667
+-------New Trial--------
+Start time:19.13259
+Start marker time: 21.03333
+Second marker time: 28.53333
+Start time:0
+Start time:0
