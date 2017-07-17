@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class LaserPointer : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class LaserPointer : MonoBehaviour
      *  1 - Teleporting and physically turning
      *  2 - Teleporting and turning with directional pad
      *  Any other number - Physically walking and rotating
-     */ 
+     */
     private const int MoveMode = 2;
     public float RotationThreshold = .1f;
     public float TranslationThreshold = .3f;
@@ -65,7 +66,7 @@ public class LaserPointer : MonoBehaviour
 
     private GameObject[] markers = new GameObject[3];
 
-    
+
 
 
     private SteamVR_Controller.Device Controller
@@ -95,15 +96,18 @@ public class LaserPointer : MonoBehaviour
         rotateReticleTransform = rotateReticle.transform;
 
         // Use the reticle corresponding to the movement mode
-        if (MoveMode == 1) {
+        if (MoveMode == 1)
+        {
             reticle = teleportReticle;
             reticleTransform = teleportReticleTransform;
-        } else if (MoveMode == 2) {
+        }
+        else if (MoveMode == 2)
+        {
             reticle = rotateReticle;
             reticleTransform = rotateReticleTransform;
         }
 
-       
+
 
         //Get markers
         markers[0] = GameObject.Find("StartMarker");
@@ -173,19 +177,13 @@ public class LaserPointer : MonoBehaviour
             {
                 // Point the laser
                 hitPoint = hit.point;
-
-                if (Vector3.Magnitude(hitPoint - GetCurrentMarker().transform.position) < TranslationThreshold)
-                {
-                    SnapReticlePosition(hit);
-                }
-
                 ShowLaser(hit);
 
                 //Show teleport reticle
                 reticle.SetActive(true);
                 reticleTransform.position = hitPoint + teleportReticleOffset;
 
-                // Rotate the marker to match new orientation
+                // Rotate the reticle to match new orientation
                 if (MoveMode == 2)
                 {
                     reticleTransform.rotation = Quaternion.Euler(0, cameraRigTransform.eulerAngles.y + GetThumbRotation(), 0);
@@ -239,12 +237,15 @@ public class LaserPointer : MonoBehaviour
         // then teleport them there
         if (movementTerminated && shouldTeleport)
         {
+
+            if (MoveMode == 2)
+            {
+                Rotate();
+            }
+
             Teleport();
 
-            if (MoveMode == 2 && ReticleSnapped())
-            {
-                SnapPlayerRotation();
-            }
+
 
             // Laser stays for some reason without this line
             laser.SetActive(false);
@@ -257,16 +258,14 @@ public class LaserPointer : MonoBehaviour
             answerReticle.SetActive(false);
             laser.SetActive(false);
         }
-
-        if (MoveMode == 2 && GetCurrentMarker() != null && Vector3.Magnitude(hitPoint - GetCurrentMarker().transform.position) < TranslationThreshold)
-        {
-            SnapReticleRotation();
-        }
     }
 
-    private GameObject GetCurrentMarker() {
-        for (int i = 0; i < markers.Length; i++) {
-            if (markers[i].active) {
+    private GameObject GetCurrentMarker()
+    {
+        for (int i = 0; i < markers.Length; i++)
+        {
+            if (markers[i].active)
+            {
                 return markers[i];
             }
         }
@@ -282,16 +281,18 @@ public class LaserPointer : MonoBehaviour
         laserTransform.localScale = new Vector3(laserTransform.localScale.x, laserTransform.localScale.y,
             hit.distance); // Scale laser so it fits exactly between the controller & the hit point
     }
-    
+
     private void Teleport()
     {
+
         shouldTeleport = false;
         reticle.SetActive(false);
         Vector3 difference = cameraRigTransform.position - headTransform.position;
         difference.y = 0;
         cameraRigTransform.position = hitPoint + difference;
     }
-    float GetThumbRotation() {
+    float GetThumbRotation()
+    {
         float thumbAngle = Vector2.Angle(Vector2.up, Controller.GetAxis());
         float turnSign = Mathf.Sign(Controller.GetAxis().x);
         return thumbAngle * turnSign;
@@ -302,43 +303,20 @@ public class LaserPointer : MonoBehaviour
         cameraRigTransform.Rotate(0, GetThumbRotation(), 0);
     }
 
-    bool ReitcleRotationSnapped() {
-           return reticleTransform.rotation.y == GetCurrentMarker().transform.localRotation.y;
-    }
-
-    bool ReticlePositionSnapped(Vector3 point) {
-        return reticleTransform.position.x == point.x && reticleTransform.position.z == point.z;
-    }
-
-    void SnapReticlePosition(RaycastHit hit) {
-        foreach (GameObject obj in markers)
-        {
-            if (obj.activeSelf)
-            {
-                Vector3 oldOrientation = trackedObj.transform.eulerAngles;
-                trackedObj.transform.LookAt(obj.transform.position);
-                Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100, teleportMask);
-                trackedObj.transform.eulerAngles = oldOrientation;
-                hitPoint = hit.point;
-                break;
-            }
-        }
-    }
-
-    void SnapReticleRotation() {
-        GameObject currentMarker = GetCurrentMarker();
-        if (currentMarker != null && Mathf.Abs(reticleTransform.rotation.y) - Mathf.Abs(currentMarker.transform.localRotation.y) < RotationThreshold)
-        {
-            reticleTransform.rotation = GetCurrentMarker().transform.localRotation;
-        }
-    }
-
-    void SnapPlayerRotation() {
-        cameraRigTransform.rotation = GetCurrentMarker().transform.rotation;
-    }
-
-    bool ReticleSnapped()
+    float AngleBetween(Quaternion first, Quaternion second)
     {
-        return reticleTransform.rotation == GetCurrentMarker().transform.rotation;
+        GameObject currentMarker = GetCurrentMarker();
+        if (currentMarker == null)
+        {
+            return Mathf.Infinity;
+        }
+
+        Vector4 firstQuaternion = new Vector4(first.w, first.x, first.y, first.z);
+        Vector4 secondQuaternion = new Vector4(second.w, second.x, second.y, second.z);
+        float dotProduct = Vector4.Dot(firstQuaternion, secondQuaternion);
+        float angle = Mathf.Acos(2 * dotProduct * dotProduct - 1);
+        angle *= 180 / Mathf.PI;
+
+        return angle;
     }
 }

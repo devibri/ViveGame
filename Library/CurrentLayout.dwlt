@@ -70,7 +70,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 271}
   m_MaxSize: {x: 4002, y: 8021}
   vertical: 1
-  controlID: 126
+  controlID: 122
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 342}
   m_MaxSize: {x: 12008, y: 8042}
   vertical: 0
-  controlID: 9
+  controlID: 121
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -372,18 +372,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\JonKellylab\Desktop\ViveGame
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 100}
-    m_SelectedIDs: 52260000
-    m_LastClickedID: 9810
+    m_SelectedIDs: 8c290000
+    m_LastClickedID: 10636
     m_ExpandedIDs: 0000000056260000d42700005c280000903200001e330000983300003a4000003c4000003e40000040400000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -530,7 +530,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 7492fdff98ecfeff90b1ffffe6fbffff00000000e8340000
+    m_ExpandedIDs: 4cb9ffffe6fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -614,9 +614,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0.065148704, y: 0.9339063, z: -0.26936758, w: 0.22587289}
   m_Size:
-    m_Target: 3.9952075
+    m_Target: 6.800733
     speed: 2
-    m_Value: 3.9952075
+    m_Value: 6.800733
   m_Ortho:
     m_Target: 0
     speed: 2
