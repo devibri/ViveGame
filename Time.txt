@@ -1,0 +1,9 @@
+Start time:0
+Start marker time: 28.86667
+Second marker time: 34.9
+-------New Trial--------
+Start time:40.70996
+Start marker time: 46.47778
+Second marker time: 52.13334
+Start time:0
+Start time:0

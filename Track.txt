@@ -1,0 +1,17 @@
+-------New Trial--------
+Start time:0.1522283
+Start time:0.2479538
+Time:30.24574 Axis vector:(-0.7, -0.7) Thumbrotation:-132.2917
+Time:30.34628 Axis vector:(-0.7, -0.7) Thumbrotation:-132.3991
+Time:30.44717 Axis vector:(-0.7, -0.7) Thumbrotation:-132.5723
+Time:30.54726 Axis vector:(-0.7, -0.7) Thumbrotation:-133.1186
+Time:31.7536 Axis vector:(-0.8, 0.0) Thumbrotation:-91.89195
+Time:31.85431 Axis vector:(-0.7, 0.1) Thumbrotation:-84.11054
+Time:31.95472 Axis vector:(-0.5, 0.0) Thumbrotation:-90.43305
+Time:32.05516 Axis vector:(-0.5, 0.0) Thumbrotation:-86.75398
+Time:32.15574 Axis vector:(-0.7, 0.1) Thumbrotation:-85.61719
+Time:32.55788 Axis vector:(-0.4, 0.9) Thumbrotation:-25.58768
+Time:32.65865 Axis vector:(-0.5, 0.9) Thumbrotation:-30.17542
+Time:32.75888 Axis vector:(-0.6, 0.7) Thumbrotation:-42.06435
+Time:32.85949 Axis vector:(-0.8, 0.3) Thumbrotation:-69.42564
+Time:32.9599 Axis vector:(-0.8, -0.3) Thumbrotation:-112.3862

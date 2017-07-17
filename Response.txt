@@ -1,0 +1,11 @@
+-------New Trial--------
+Response: (4.5, 0.1, -2.6) Time: 12.01706
+Response: (4.5, 0.1, -2.6) Time: 14.3857
+Response: (4.5, 0.1, -2.6) Time: 16.03815
+Response: (4.5, 0.1, -2.6) Time: 17.2333
+Response: (4.5, 0.1, -2.6) Time: 17.55828
+Response: (4.5, 0.1, -2.6) Time: 17.8151
+Response: (4.5, 0.1, -2.6) Time: 18.0375
+Response: (4.5, 0.1, -2.6) Time: 19.18876
+Response: (19.1, 0.1, -9.5) Time: 11.80463
+Response: (7.0, 0.1, 4.7) Time: 27.97829

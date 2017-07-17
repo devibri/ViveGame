@@ -66,7 +66,7 @@ public class SecondMarkerSpawn : MonoBehaviour
         this.transform.position = FirstMarker.transform.position;
 
         //moving second marker forward by a certain random amount
-        this.transform.Translate(Vector3.back * (.914f + distance), Space.Self); //5ft + random amt
+        this.transform.Translate(Vector3.back * (1.219f + distance), Space.Self); //4ft + random amt
 
 
         System.IO.File.AppendAllText(markerFile, "First Marker:" + FirstMarker.transform.position + "\r\n");
