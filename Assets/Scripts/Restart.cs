@@ -14,12 +14,13 @@ public class Restart : MonoBehaviour {
 
     //FIRST MARKER
     //list of degree values to be added to stack 
-    static List<int> degreeList = new List<int> { -70, -42, -14, 14, 42, 70, -70, -42, -14, 14, 42, 70 };
+    static List<float> degreeList = new List<float> { -135, 112.5f, 67.5f, 45, 22.5f, -22.5f, -45, -65.5f, -112.5f, -135 };
     //stack of degree values
-    static Stack<int> degreeStack = new Stack<int>();
+    static Stack<float> degreeStack = new Stack<float>();
 
     //current degree value
-    public static int degree;
+    public static float degree;
+    public AudioSource end;
 
     void Start () {
         //makes sure no start positions are ever chosen twice in a row
@@ -41,15 +42,22 @@ public class Restart : MonoBehaviour {
             degreeList.RemoveAt(index);
         }
 
-        //for every restart, pops a value from the stack 
-        degree = degreeStack.Pop();
+        try
+        {
+            //for every restart, pops a value from the stack 
+            degree = degreeStack.Pop();
+       }
+        catch (System.Exception e)
+        {
+            GetComponent<AudioSource>().Play();
+        }
         //Debug.Log("Degree stack elements left: " + degreeStack.Count);
-        print("Degree: " + degree);
-       
+        //print("Degree: " + degree);
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         //restarts the scene on key press Space
         if (Input.GetKeyDown("space"))
         {

@@ -64,10 +64,8 @@ public class LaserPointer : MonoBehaviour
     private Transform reticleTransform;
 
     private GameObject[] markers = new GameObject[3];
-    private GameObject currentMarker;
 
-    //player position / rotation
-    private GameObject camera;
+    
 
 
     private SteamVR_Controller.Device Controller
@@ -96,6 +94,7 @@ public class LaserPointer : MonoBehaviour
         answerReticleTransform = answerReticle.transform;
         rotateReticleTransform = rotateReticle.transform;
 
+        // Use the reticle corresponding to the movement mode
         if (MoveMode == 1) {
             reticle = teleportReticle;
             reticleTransform = teleportReticleTransform;
@@ -129,23 +128,18 @@ public class LaserPointer : MonoBehaviour
 
     void Update()
     {
-        camera = GameObject.Find("Camera (eye)");
-        //moves the camera rig rotation to always be the same as the player rotation
-        //cameraRigTransform.forward = camera.transform.forward;
-
-
-        if (Input.GetKeyDown( KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             string[] fileList = System.IO.Directory.GetFiles(System.IO.Directory.GetCurrentDirectory(), "*.txt");
             int i = 0;
             for (; System.IO.Directory.Exists(i.ToString() + "_" + MoveMode.ToString()); i++)
-            {}
+            { }
             System.IO.Directory.CreateDirectory(i.ToString() + "_" + MoveMode.ToString());
-            foreach(string file in fileList)
+            foreach (string file in fileList)
             {
 
                 string[] splitFile = file.Split(delimiters);
-                Debug.Log(System.IO.Directory.GetCurrentDirectory() + "\\" + i.ToString() + "_" + MoveMode.ToString()+ "\\" +  splitFile[splitFile.Length - 1]);
+                Debug.Log(System.IO.Directory.GetCurrentDirectory() + "\\" + i.ToString() + "_" + MoveMode.ToString() + "\\" + splitFile[splitFile.Length - 1]);
                 System.IO.File.Move(file, System.IO.Directory.GetCurrentDirectory() + "\\" + i.ToString() + "_" + MoveMode.ToString() + "\\" + splitFile[splitFile.Length - 1]);
             }
         }
@@ -160,24 +154,28 @@ public class LaserPointer : MonoBehaviour
             currentTime = Time.time;
             if (Controller.GetAxis() != zeroVector)
             {
-                System.IO.File.AppendAllText(trackpadFile,"Time:" + Time.time + " Axis vector:" +  Controller.GetAxis().ToString() + " Thumbrotation:" + GetThumbRotation() + "\r\n");
+                System.IO.File.AppendAllText(trackpadFile, "Time:" + Time.time + " Axis vector:" + Controller.GetAxis().ToString() + " Thumbrotation:" + GetThumbRotation() + "\r\n");
             }
         }
 
 
         // Make sure the player either teleport or answers--not both
-        if (answerInitiated && movementInitiated) {
+        if (answerInitiated && movementInitiated)
+        {
             answerInitiated = false;
         }
 
-        if (movementInitiated){
+        if (movementInitiated)
+        {
             // Send out a raycast from the controller
             RaycastHit hit;
-            if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100, teleportMask)){
+            if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100, teleportMask))
+            {
                 // Point the laser
                 hitPoint = hit.point;
 
-                if (Vector3.Magnitude(hitPoint - GetCurrentMarker().transform.position) < TranslationThreshold) {
+                if (Vector3.Magnitude(hitPoint - GetCurrentMarker().transform.position) < TranslationThreshold)
+                {
                     SnapReticlePosition(hit);
                 }
 
@@ -188,18 +186,23 @@ public class LaserPointer : MonoBehaviour
                 reticleTransform.position = hitPoint + teleportReticleOffset;
 
                 // Rotate the marker to match new orientation
-                if (MoveMode == 2){
+                if (MoveMode == 2)
+                {
                     reticleTransform.rotation = Quaternion.Euler(0, cameraRigTransform.eulerAngles.y + GetThumbRotation(), 0);
                 }
 
                 // If you're in this block, you hit something with the teleport mask
                 shouldTeleport = true;
-            } else {
+            }
+            else
+            {
                 // If you didn't hit the somthing with the teleport mask, turn off the laser
                 laser.SetActive(false);
                 reticle.SetActive(false);
             }
-        } else if (answerInitiated){
+        }
+        else if (answerInitiated)
+        {
             // Send out a raycast from the controller
             RaycastHit hit;
 
@@ -209,14 +212,16 @@ public class LaserPointer : MonoBehaviour
                 hitPoint = hit.point;
                 ShowLaser(hit);
 
- 
+
                 //Show teleport reticle
                 answerReticle.SetActive(true);
                 answerReticleTransform.position = hitPoint + teleportReticleOffset;
 
                 // If you're in this block, you hit something with the teleport mask
                 shouldTeleport = true;
-            } else {
+            }
+            else
+            {
                 // If you didn't hit the somthing with the teleport mask, turn off the laser
                 laser.SetActive(false);
                 answerReticle.SetActive(false);
@@ -232,18 +237,21 @@ public class LaserPointer : MonoBehaviour
 
         // If the player initiated a teleport where somewhere nice (object with teleport mask)
         // then teleport them there
-        if (movementTerminated && shouldTeleport) {
+        if (movementTerminated && shouldTeleport)
+        {
             Teleport();
 
             if (MoveMode == 2 && ReticleSnapped())
             {
                 SnapPlayerRotation();
             }
-            
-           // Laser stays for some reason without this line
-           laser.SetActive(false);
+
+            // Laser stays for some reason without this line
+            laser.SetActive(false);
             answerReticle.SetActive(false);
-        } else if (shouldTeleport && answerTerminated) {
+        }
+        else if (shouldTeleport && answerTerminated)
+        {
             // Writes the response to a file
             System.IO.File.AppendAllText(responseFile, "Response: " + answerReticleTransform.position.ToString() + " Time: " + Time.time + "\r\n");
             answerReticle.SetActive(false);
@@ -274,14 +282,15 @@ public class LaserPointer : MonoBehaviour
         laserTransform.localScale = new Vector3(laserTransform.localScale.x, laserTransform.localScale.y,
             hit.distance); // Scale laser so it fits exactly between the controller & the hit point
     }
-
+    
     private void Teleport()
     {
-        shouldTeleport = false; // Teleport in progress, no need to do it again until the next touchpad release
-        reticle.SetActive(false); // Hide reticle
-        cameraRigTransform.position = hitPoint; // Change the camera rig position to where the the teleport reticle was. Also add the difference so the new virtual room position is relative to the player position, allowing the player's new position to be exactly where they pointed. (see illustration)
+        shouldTeleport = false;
+        reticle.SetActive(false);
+        Vector3 difference = cameraRigTransform.position - headTransform.position;
+        difference.y = 0;
+        cameraRigTransform.position = hitPoint + difference;
     }
-
     float GetThumbRotation() {
         float thumbAngle = Vector2.Angle(Vector2.up, Controller.GetAxis());
         float turnSign = Mathf.Sign(Controller.GetAxis().x);
@@ -293,8 +302,12 @@ public class LaserPointer : MonoBehaviour
         cameraRigTransform.Rotate(0, GetThumbRotation(), 0);
     }
 
-    bool ReticleSnapped() {
-           return reticleTransform.rotation == currentMarker.transform.rotation;
+    bool ReitcleRotationSnapped() {
+           return reticleTransform.rotation.y == GetCurrentMarker().transform.localRotation.y;
+    }
+
+    bool ReticlePositionSnapped(Vector3 point) {
+        return reticleTransform.position.x == point.x && reticleTransform.position.z == point.z;
     }
 
     void SnapReticlePosition(RaycastHit hit) {
@@ -313,7 +326,7 @@ public class LaserPointer : MonoBehaviour
     }
 
     void SnapReticleRotation() {
-        currentMarker = GetCurrentMarker();
+        GameObject currentMarker = GetCurrentMarker();
         if (currentMarker != null && Mathf.Abs(reticleTransform.rotation.y) - Mathf.Abs(currentMarker.transform.localRotation.y) < RotationThreshold)
         {
             reticleTransform.rotation = GetCurrentMarker().transform.localRotation;
@@ -322,5 +335,10 @@ public class LaserPointer : MonoBehaviour
 
     void SnapPlayerRotation() {
         cameraRigTransform.rotation = GetCurrentMarker().transform.rotation;
+    }
+
+    bool ReticleSnapped()
+    {
+        return reticleTransform.rotation == GetCurrentMarker().transform.rotation;
     }
 }

@@ -99,25 +99,25 @@ public class StartMarkerSpawn : MonoBehaviour {
         }
         else if (RestartScript.startPosition == 5)
         {
-            xCoord = -1.52f;
-            zCoord = 2.13f;
+            xCoord = -1.22f;
+            zCoord = 1.83f;
             degree = 315;
         }
         else if (RestartScript.startPosition == 6)
         {
-            xCoord = 1.52f;
-            zCoord = 2.13f;
+            xCoord = 1.22f;
+            zCoord = 1.83f;
             degree = 45;
         }
         else if (RestartScript.startPosition == 7)
         {
-            xCoord = 1.52f;
-            zCoord = -2.13f;
+            xCoord = 1.22f;
+            zCoord = -1.83f;
             degree = 135;
         }
         else { //randnum == 8
-            xCoord = -1.52f;
-            zCoord = -2.13f;
+            xCoord = -1.22f;
+            zCoord = -1.83f;
             degree = 225;
         }
 
