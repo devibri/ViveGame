@@ -1,0 +1,42 @@
+Start time:103.9701
+Start time:0
+Start marker time: 10.1
+Second marker time: 17.81111
+-------New Trial--------
+Start time:31.14463
+Start marker time: 36.34444
+Second marker time: 48.16667
+-------New Trial--------
+Start time:55.26614
+Start marker time: 61.07778
+Second marker time: 69.15556
+-------New Trial--------
+Start time:78.75715
+Start marker time: 85.67778
+Second marker time: 92.75555
+-------New Trial--------
+Start time:98.59133
+Start marker time: 105.2
+Second marker time: 112.0111
+-------New Trial--------
+Start time:115.9928
+Start marker time: 131.1222
+Second marker time: 137.6222
+-------New Trial--------
+Start time:141.5464
+Start marker time: 145.4667
+Second marker time: 154.2444
+-------New Trial--------
+Start time:157.2495
+Start marker time: 161.2889
+Second marker time: 168.0444
+-------New Trial--------
+Start time:172.7144
+Start marker time: 176.4889
+Second marker time: 182.3
+-------New Trial--------
+Start time:186.3958
+Start marker time: 190.6445
+Second marker time: 196.2
+-------New Trial--------
+Start time:206.2077

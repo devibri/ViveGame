@@ -1,0 +1,22 @@
+Response: (-1.8, 0.1, -0.6) Time: 50.00398
+Response: (-2.3, 0.1, -0.2) Time: 117.6899
+Response: (2.3, 0.1, 2.0) Time: 15.46766
+-------New Trial--------
+Response: (1.7, 0.1, -0.1) Time: 31.00258
+-------New Trial--------
+Response: (0.6, 0.1, -3.3) Time: 43.01896
+-------New Trial--------
+Response: (-4.6, 0.1, 0.2) Time: 56.01653
+-------New Trial--------
+Response: (-0.6, 0.1, 3.6) Time: 68.23617
+-------New Trial--------
+Response: (-2.1, 0.1, -2.8) Time: 78.73303
+-------New Trial--------
+Response: (0.7, 0.1, 3.0) Time: 89.22271
+-------New Trial--------
+Response: (1.3, 0.1, -1.9) Time: 109.7829
+-------New Trial--------
+Response: (1.5, 0.1, 2.7) Time: 123.8644
+-------New Trial--------
+Response: (2.6, 0.1, 2.3) Time: 132.4634
+-------New Trial--------

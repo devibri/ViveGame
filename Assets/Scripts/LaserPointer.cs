@@ -22,7 +22,7 @@ public class LaserPointer : MonoBehaviour
      *  2 - Teleporting and turning with directional pad
      *  Any other number - Physically walking and rotating
      */
-    private const int MoveMode = 0;
+    private const int MoveMode = 2;
 
     // Prefabs for reticles
     public GameObject answerReticlePrefab;
@@ -64,9 +64,6 @@ public class LaserPointer : MonoBehaviour
     private Transform reticleTransform;
 
     private GameObject[] markers = new GameObject[3];
-
-
-
 
     private SteamVR_Controller.Device Controller
     {
@@ -122,7 +119,7 @@ public class LaserPointer : MonoBehaviour
 
         System.IO.File.AppendAllText(trackpadFile, "Start time:" + Time.time + "\r\n");
 
-        // Hide everything
+        // Hide reticles and laser
         laser.SetActive(false);
         teleportReticle.SetActive(false);
         answerReticle.SetActive(false);
@@ -304,15 +301,26 @@ public class LaserPointer : MonoBehaviour
     void MoveFiles() {
         string[] fileList = System.IO.Directory.GetFiles(System.IO.Directory.GetCurrentDirectory(), "*.txt");
         int i = 0;
-        for (; System.IO.Directory.Exists(i.ToString() + "_" + MoveMode.ToString()); i++)
+        char landmark;
+        GameObject Landm = GameObject.Find("Landmarks");
+        try
+        {
+            Landm.ToString();
+            landmark = 'L';
+            
+        } catch( Exception e)
+        {
+            landmark = 'N';
+        }
+        for (; System.IO.Directory.Exists(i.ToString() + "_" + MoveMode.ToString() + landmark); i++)
         { }
-        System.IO.Directory.CreateDirectory(i.ToString() + "_" + MoveMode.ToString());
+        System.IO.Directory.CreateDirectory(i.ToString() + "_" + MoveMode.ToString() + landmark);
         foreach (string file in fileList)
         {
 
             string[] splitFile = file.Split(delimiters);
-            Debug.Log(System.IO.Directory.GetCurrentDirectory() + "\\" + i.ToString() + "_" + MoveMode.ToString() + "\\" + splitFile[splitFile.Length - 1]);
-            System.IO.File.Move(file, System.IO.Directory.GetCurrentDirectory() + "\\" + i.ToString() + "_" + MoveMode.ToString() + "\\" + splitFile[splitFile.Length - 1]);
+            //Debug.Log(System.IO.Directory.GetCurrentDirectory() + "\\" + i.ToString() + "_" + MoveMode.ToString() + landmark + "\\" + splitFile[splitFile.Length - 1]);
+            System.IO.File.Move(file, System.IO.Directory.GetCurrentDirectory() + "\\" + i.ToString() + "_" + MoveMode.ToString() + landmark + "\\" + splitFile[splitFile.Length - 1]);
         }
     }
 }

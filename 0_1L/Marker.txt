@@ -1,0 +1,44 @@
+Starting Marker:(-1.5, 0.0, 0.0)
+First Marker:(-0.6, 0.0, 0.0)
+Second Marker:(-0.6, 0.0, -0.9)
+Starting Marker:(1.2, 0.0, 1.8)
+First Marker:(0.0, 0.0, 0.6)
+Second Marker:(0.0, 0.0, -0.9)
+-------New Trial--------
+Starting Marker:(1.5, 0.0, 0.0)
+First Marker:(-0.3, 0.0, 0.0)
+Second Marker:(0.3, 0.0, 1.4)
+-------New Trial--------
+Starting Marker:(1.2, 0.0, -1.8)
+First Marker:(0.1, 0.0, -0.8)
+Second Marker:(-0.4, 0.0, 0.5)
+-------New Trial--------
+Starting Marker:(-1.5, 0.0, 0.0)
+First Marker:(0.2, 0.0, 0.0)
+Second Marker:(-0.8, 0.0, 1.0)
+-------New Trial--------
+Starting Marker:(0.0, 0.0, 2.1)
+First Marker:(0.0, 0.0, 0.6)
+Second Marker:(-1.0, 0.0, -0.4)
+-------New Trial--------
+Starting Marker:(-1.2, 0.0, -1.8)
+First Marker:(0.1, 0.0, -0.5)
+Second Marker:(-0.5, 0.0, 0.9)
+-------New Trial--------
+Starting Marker:(1.2, 0.0, 1.8)
+First Marker:(0.1, 0.0, 0.8)
+Second Marker:(-1.0, 0.0, 1.2)
+-------New Trial--------
+Starting Marker:(0.0, 0.0, -2.1)
+First Marker:(0.0, 0.0, -0.6)
+Second Marker:(-1.0, 0.0, -1.6)
+-------New Trial--------
+Starting Marker:(1.2, 0.0, 1.8)
+First Marker:(-0.1, 0.0, 0.5)
+Second Marker:(1.2, 0.0, 0.0)
+-------New Trial--------
+Starting Marker:(0.0, 0.0, 2.1)
+First Marker:(0.0, 0.0, 0.6)
+Second Marker:(0.5, 0.0, -0.5)
+-------New Trial--------
+Starting Marker:(1.5, 0.0, 0.0)
