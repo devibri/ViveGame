@@ -15,7 +15,7 @@ public class TrainingRestart : MonoBehaviour {
     //FIRST MARKER
     //list of degree values to be added to stack 
     //static List<int> degreeList = new List<int> { -90, 90 };
-    int[] degreeList = new int[] { -90, 90 };
+    int[] degreeList = new int[] { 56, -56 };
     //stack of degree values
     //static Stack<int> degreeStack = new Stack<int>();
 

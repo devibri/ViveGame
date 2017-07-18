@@ -73,7 +73,7 @@ public class TrainingFirstMarkerSpawn : MonoBehaviour {
 
 
 
-        this.transform.Translate(Vector3.back * (.914f + randNum), Space.Self); //3ft + random amt
+        this.transform.Translate(Vector3.back * (1.52f), Space.Self); //5ft + random amt
 
 
         
