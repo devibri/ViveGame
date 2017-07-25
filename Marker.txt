@@ -1,3 +1,1 @@
 Starting Marker:(-1.5, 0.0, 0.0)
-First Marker:(0.0, 0.0, 0.0)
-Second Marker:(0.0, 0.0, -1.2)

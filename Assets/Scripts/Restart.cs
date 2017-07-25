@@ -14,7 +14,7 @@ public class Restart : MonoBehaviour {
 
     //FIRST MARKER
     //list of degree values to be added to stack 
-    static List<float> degreeList = new List<float> { -135, 112.5f, 67.5f, 45, 22.5f, -22.5f, -45, -65.5f, -112.5f, -135 };
+    static List<float> degreeList = new List<float> { 135, 112.5f, 90, 67.5f, 45, 22.5f, -22.5f, -45, -65.5f, -90, -112.5f, -135 };
     //stack of degree values
     static Stack<float> degreeStack = new Stack<float>();
 

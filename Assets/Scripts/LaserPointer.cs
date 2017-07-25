@@ -181,7 +181,7 @@ public class LaserPointer : MonoBehaviour
                 reticle.SetActive(false);
             }
         }
-        else if (answerInitiated && GetCurrentMarker() == null)
+        else if (answerInitiated)
         {
             // Send out a raycast from the controller
             RaycastHit hit;
@@ -229,7 +229,7 @@ public class LaserPointer : MonoBehaviour
             laser.SetActive(false);
             answerReticle.SetActive(false);
         }
-        else if (shouldTeleport && answerTerminated && GetCurrentMarker() == null)
+        else if (shouldTeleport && answerTerminated)
         {
             // Writes the response to a file
             System.IO.File.AppendAllText(responseFile, "Response: " + answerReticleTransform.position.ToString() + " Time: " + Time.time + "\r\n");
