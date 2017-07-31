@@ -12,14 +12,12 @@ public class Move : MonoBehaviour
     void Start()
     {
         currentTime = Time.time;
-        //if (System.IO.File.Exists(outputFile))
-        //{
-        //    System.IO.File.Delete(outputFile);
-        //}
     }
 
+    // Write the position and rotation of the object it is attached to  (camera rig)
     void Update()
     {
+	// Write the position and rotation 5 times per second
         if (Time.time - currentTime > 0.2f)
         {
             System.IO.File.AppendAllText(outputFile, "Time:" + Time.time + " Eyes position:" + eyes.GetComponent<Transform>().position + " Camera rig position:" + GetComponent<Transform>().position + " Eyes rotation:" + eyes.GetComponent<Transform>().eulerAngles.ToString() + "\r\n");
@@ -27,10 +25,13 @@ public class Move : MonoBehaviour
         }
     }
 
+    // Fixed Update is different from regular update. It runs before update
     void FixedUpdate()
     {
         move();
     }
+    
+    // Move according to the keyboard
     void move()
     {
         if (Input.GetKey(KeyCode.W))
@@ -57,14 +58,6 @@ public class Move : MonoBehaviour
         {
             GetComponent<Transform>().RotateAround(GetComponent<Transform>().transform.position, Vector3.up, MOVE_AMOUNT);
         }
-        //if (Input.GetKey(KeyCode.UpArrow))
-        //{
-        //    GetComponent<Transform>().RotateAround(GetComponent<Transform>().transform.position, Vector3.right, MOVE_AMOUNT);
-        //}
-        //if (Input.GetKey(KeyCode.DownArrow))
-        //{
-        //    GetComponent<Transform>().RotateAround(GetComponent<Transform>().transform.position, Vector3.right, -MOVE_AMOUNT);
-        //}
         if (Input.GetKey(KeyCode.Space))
         {
             GetComponent<Transform>().Translate(Vector3.up / 10);
