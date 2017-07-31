@@ -1,6 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
+/*
+ * Some of this code was based on the tutorial at: raywenderlich.com/149239/htc-vive-tutorial-unity 
+ */
+
 public class LaserPointer : MonoBehaviour
 {
     public Transform cameraRigTransform;
@@ -20,7 +24,9 @@ public class LaserPointer : MonoBehaviour
     /* MoveMode refers to the type of movement. They are defined as follows
      *  1 - Teleporting and physically turning
      *  2 - Teleporting and turning with directional pad
-     *  Any other number - Physically walking and rotating
+     *  Any other number (usually 0) - Physically walking and rotating
+     *
+     *  This numbering scheme is used in the names of files recording participants' responses.
      */
     private const int MoveMode = 2;
 
@@ -40,9 +46,12 @@ public class LaserPointer : MonoBehaviour
     const string trackpadFile = "Track.txt";
     const string responseFile = "Response.txt";
 
+
+    // Delimiter for files  
     char[] delimiters = { '\\' };
 
-    // Vector when you're not touching it
+    // The zero vector is returned by the controller if touhcpad isn't 
+    // being touched
     Vector2 zeroVector = new Vector2(0.0f, 0.0f);
 
     // Needed for time
@@ -54,7 +63,7 @@ public class LaserPointer : MonoBehaviour
     private Transform teleportReticleTransform;
     private Transform rotateReticleTransform;
 
-    // Buttons used
+    // Buttons reserved for special functions
     public const ulong MoveButton = SteamVR_Controller.ButtonMask.Touchpad;
     public const ulong AnswerButton = SteamVR_Controller.ButtonMask.Trigger;
     public KeyCode MoveFileButton = KeyCode.M;
@@ -63,18 +72,38 @@ public class LaserPointer : MonoBehaviour
     private GameObject reticle;
     private Transform reticleTransform;
 
+    // References to each of the markers
     private GameObject[] markers = new GameObject[3];
 
+
+    // A reference to the controller
     private SteamVR_Controller.Device Controller
     {
         get { return SteamVR_Controller.Input((int)trackedObj.index); }
     }
 
+    /*
+     *	Name: Awake
+     *
+     *	Purpose: Awake is called when an exe is started. This gets a 
+     *		 reference to some object necessary to get a reference
+     *		 to the controller. We don't know what it is. 
+     *
+     */
     void Awake()
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
     }
 
+    /*
+     * 	Name: Start
+     *
+     *	Purpose: Like Awake, Start runs when an exe is started. 
+     *		 Start runs after Awake. Here, many of the game
+     *		 objects used in the trials are instantiated. 
+     *		 Addiitonally, references to the markers are 
+     *		 made and output files are set up.
+     */
     void Start()
     {
         // Intialize laser
@@ -126,17 +155,27 @@ public class LaserPointer : MonoBehaviour
         rotateReticle.SetActive(false);
     }
 
+    /*
+     * Name: Update
+     *
+     * Purpose: Update runs once per frame. Update takes care of writing to output files,
+     * 		moving output files, teleporting, rotation, and recording answers.
+     */
     void Update()
     {
+	// Move output files to their corresponding folders
         if (Input.GetKeyDown(MoveFileButton))
         {
             MoveFiles();
         }
+
+
         // Check if the user started moving, taking into account which movement
         // mode they are in
         bool movementInitiated = Controller.GetPress(MoveButton);
         bool answerInitiated = Controller.GetPress(AnswerButton);
         
+	// Limit data recording to 10 times per second
         if (Time.time - currentTime > 0.1f)
         {
             currentTime = Time.time;
@@ -153,6 +192,7 @@ public class LaserPointer : MonoBehaviour
             answerInitiated = false;
         }
 
+	// Check if the pariticpant is and should be teleporting
         if (movementInitiated && (MoveMode == 1 || MoveMode == 2))
         {
             // Send out a raycast from the controller
@@ -225,7 +265,7 @@ public class LaserPointer : MonoBehaviour
 
             Teleport();
 
-            // Laser stays for some reason without this line
+            // Hide the laser after teleporting
             laser.SetActive(false);
             answerReticle.SetActive(false);
         }
@@ -238,6 +278,16 @@ public class LaserPointer : MonoBehaviour
         }
     }
 
+
+    /*
+     * 	Name: GetCurrentMarker
+     *
+     *	Purpose: This function gets us the marker that the participant is currently viewing. When the
+     *		 paritipant collides with a marker, the marker's active field is set to false, and since
+     *		 the markers appear in order, the current marker is the first one that isn't false. If
+     *		 all the markers are not active (the pariticpants has collided with all of them), then
+     *		 null is returned.
+     */
     private GameObject GetCurrentMarker()
     {
         for (int i = 0; i < markers.Length; i++)
@@ -260,44 +310,71 @@ public class LaserPointer : MonoBehaviour
             hit.distance); // Scale laser so it fits exactly between the controller & the hit point
     }
 
+    /*
+     * 	Name: Teleport
+     *
+     * 	Purpose: This function teleports the participant by moving them to the point that the laser
+     * 		 hits the floor. 
+     *
+     */
     private void Teleport()
     {
 
         shouldTeleport = false;
         reticle.SetActive(false);
-        Vector3 difference = cameraRigTransform.position - headTransform.position;
+
+	/* The  difference vector is the offset between the players position and the
+	 * center of the camera rig. The y component is set to zero so that the player
+	 * isn't teleported vertically
+         */
+	Vector3 difference = cameraRigTransform.position - headTransform.position;
         difference.y = 0;
+
         cameraRigTransform.position = hitPoint + difference;
     }
+
+    /*
+     * Name: GetThumbRotation
+     *
+     * Purpose: This function finds the degree of turn indicated by the user on
+     * 		on the controller trackpad. The position the user is touching the
+     * 		trackpad is returned with the statement: Controller.GetAxis()
+     */
     float GetThumbRotation()
     {
-        float thumbAngle = Vector2.Angle(Vector2.up, Controller.GetAxis());
-        float turnSign = Mathf.Sign(Controller.GetAxis().x);
+        /* Find the angle between the forward direction (up on the pad) and the 
+	 * vector starting at the center and ending at the point where the user
+	 * has their thumb on the pad
+	 */
+	float thumbAngle = Vector2.Angle(Vector2.up, Controller.GetAxis());
+        
+	
+	/* Turning to the left is considiered a negative and turning to the left
+	 * is considered positive. The x value reflects these sign conventions
+	 */
+	float turnSign = Mathf.Sign(Controller.GetAxis().x);
+
         return thumbAngle * turnSign;
     }
 
+    /*
+     * 	Name: Rotate
+     *
+     * 	Purpose: This function rotates the player by rotating the camera rig. The
+     * 		 amount that the camera rig is rotated is the amount specified by
+     * 		 the user on the trackpad.
+     */
     void Rotate()
     {
         cameraRigTransform.Rotate(0, GetThumbRotation(), 0);
     }
 
-    float AngleBetween(Quaternion first, Quaternion second)
-    {
-        GameObject currentMarker = GetCurrentMarker();
-        if (currentMarker == null)
-        {
-            return Mathf.Infinity;
-        }
-
-        Vector4 firstQuaternion = new Vector4(first.w, first.x, first.y, first.z);
-        Vector4 secondQuaternion = new Vector4(second.w, second.x, second.y, second.z);
-        float dotProduct = Vector4.Dot(firstQuaternion, secondQuaternion);
-        float angle = Mathf.Acos(2 * dotProduct * dotProduct - 1);
-        angle *= 180 / Mathf.PI;
-
-        return angle;
-    }
-
+    /*
+     * Name: MoveFiles
+     *
+     * Purpose:
+     *
+     */
     void MoveFiles() {
         string[] fileList = System.IO.Directory.GetFiles(System.IO.Directory.GetCurrentDirectory(), "*.txt");
         int i = 0;
@@ -319,7 +396,6 @@ public class LaserPointer : MonoBehaviour
         {
 
             string[] splitFile = file.Split(delimiters);
-            //Debug.Log(System.IO.Directory.GetCurrentDirectory() + "\\" + i.ToString() + "_" + MoveMode.ToString() + landmark + "\\" + splitFile[splitFile.Length - 1]);
             System.IO.File.Move(file, System.IO.Directory.GetCurrentDirectory() + "\\" + i.ToString() + "_" + MoveMode.ToString() + landmark + "\\" + splitFile[splitFile.Length - 1]);
         }
     }
