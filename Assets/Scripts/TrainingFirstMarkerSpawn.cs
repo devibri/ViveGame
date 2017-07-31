@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TrainingFirstMarkerSpawn : MonoBehaviour {
     
+    //FOR TRAINING SCENE ONLY -- moves the first marker to appropriate spot and rotation on contact 
+
+
     private GameObject FirstMarker;
     private GameObject StartMarker;
     private GameObject GameController;
@@ -13,20 +16,14 @@ public class TrainingFirstMarkerSpawn : MonoBehaviour {
     Renderer rend2; //renderer for FirstArrow
     int startDegree; //degree of start arrow
     public static float degree; //degree of first arrow
-    float currentRotation;
-    float randNum; //determines which random length is picked
-
 
 
     void Start ()
     {
-        
+        //initializes marker in spot that can be ignored
         this.transform.position = new Vector3(10, 0, 10);
 
-        
-
-        //how much distance the first marker will change by, randomly
-        randNum = Random.Range(0, 3) / 3.28f; //divide to convert to meter amt
+        /*initializing stuff*/
 
         //start marker
         StartMarker = GameObject.Find("StartMarker");
@@ -36,11 +33,10 @@ public class TrainingFirstMarkerSpawn : MonoBehaviour {
         GameController = GameObject.Find("GameController");
         TrainingRestart RestartScript = GameController.GetComponent<TrainingRestart>();
         
-
         //firstmarker's arrow
         arrow = GameObject.Find("ringarrow");
 
-
+        //renderer for firstmarker and its arrow
         rend = this.GetComponent<Renderer>();
         rend2 = arrow.GetComponent<Renderer>();
 
@@ -55,14 +51,14 @@ public class TrainingFirstMarkerSpawn : MonoBehaviour {
 
     }
 
+    //on collision with startmarker, make firstmarker visible and set it to appropriate position / rotation 
     public void SpawnFirstMarker()
     {
-        
-
+        //make firstmarker and its arrow appear
         rend.enabled = true;
         rend2.enabled = true;
 
-        //now moving firstmarker forward given amount -- setting position to other marker, then moving it forward
+        //temporarily set firstmarker position to position of startmarker 
         this.transform.position = StartMarker.transform.position;
 
         //finding the rotation of start marker
@@ -71,19 +67,11 @@ public class TrainingFirstMarkerSpawn : MonoBehaviour {
         //temporarily setting first marker to same degree
         this.transform.Rotate(0, startDegree, 0);
 
-
-
-        this.transform.Translate(Vector3.back * (1.52f), Space.Self); //5ft + random amt
-
-
-        
-        
+        //moves the marker towards origin by 5ft
+        this.transform.Translate(Vector3.back * (1.52f), Space.Self); 
 
         //changing rotation of firstmarker to the same rotation plus or minus a certain amount
         degree = startDegree + TrainingRestart.degree;
-        //
         this.transform.Rotate(0, this.transform.rotation.y + TrainingRestart.degree, 0);
-
-
     }
 }

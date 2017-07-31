@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//This script positions the first marker at the starting marker position. 
+//This script is for the training scene
+//It positions the start marker at one of two spots and rotations based on TrainingRestart.cs 
 
 public class TrainingStartMarkerSpawn : MonoBehaviour {
     
-    float xCoord;
-    float zCoord;
-    public static int degree;
+    float xCoord; //x coordinate of start marker
+    float zCoord; //z coordinate of start marker
+    public static int degree; //degree of triangle 
     private GameObject GameController;
     private const string markerFile = "Marker.txt";
     private const string timeFile = "Time.txt";
@@ -27,6 +28,7 @@ public class TrainingStartMarkerSpawn : MonoBehaviour {
         
 
         //depending on random roll, set start marker to start position and rotation towards origin
+        //really only puts it to the left or right of the participant 
         if (RestartScript.startPosition == 1)
         {
             xCoord = -1.52f;
@@ -49,7 +51,7 @@ public class TrainingStartMarkerSpawn : MonoBehaviour {
             degree = 90;
         }
         
-
+        //changes the start marker position / rotation according to the previous if statement 
         this.transform.position = new Vector3(xCoord, 0, zCoord);
         this.transform.Rotate(0, degree, 0);
         
