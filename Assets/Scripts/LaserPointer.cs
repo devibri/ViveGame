@@ -372,14 +372,17 @@ public class LaserPointer : MonoBehaviour
     /*
      * Name: MoveFiles
      *
-     * Purpose:
+     * Purpose: This function makes a folder for the next participant and moves all of
+     * 		the output files to that folder.
      *
      */
     void MoveFiles() {
         string[] fileList = System.IO.Directory.GetFiles(System.IO.Directory.GetCurrentDirectory(), "*.txt");
         int i = 0;
         char landmark;
-        GameObject Landm = GameObject.Find("Landmarks");
+        
+	// Check if there's landmarks
+	GameObject Landm = GameObject.Find("Landmarks");
         try
         {
             Landm.ToString();
@@ -389,12 +392,15 @@ public class LaserPointer : MonoBehaviour
         {
             landmark = 'N';
         }
+
+	// Go through all of the existing pariticpant response folders. Then make one more.
         for (; System.IO.Directory.Exists(i.ToString() + "_" + MoveMode.ToString() + landmark); i++)
         { }
         System.IO.Directory.CreateDirectory(i.ToString() + "_" + MoveMode.ToString() + landmark);
-        foreach (string file in fileList)
+        
+	// Move all the output files to the folder that was just created
+	foreach (string file in fileList)
         {
-
             string[] splitFile = file.Split(delimiters);
             System.IO.File.Move(file, System.IO.Directory.GetCurrentDirectory() + "\\" + i.ToString() + "_" + MoveMode.ToString() + landmark + "\\" + splitFile[splitFile.Length - 1]);
         }
