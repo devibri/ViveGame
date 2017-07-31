@@ -3,7 +3,9 @@ A Unity project for testing spatial navigation in virtual reality.
 
 ## About the project
 This was created at Iowa State University's Virtual Reality Application Center as part of the summer Research Experience for Undergraduates, Summer 2017. 
+
 Contributors: Devi Acharya, Emanuel Bustamante, Alfredo Velasco
+
 Mentors: Lucia Cherep, Jonathan Kelly, Ph.D.
 
 ## Overview
