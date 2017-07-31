@@ -32,7 +32,7 @@ Scripts marked "Training"* are similar to those of the same name, but used for t
 
 Restart handles resetting the scene on keypress (space bar) and the main array of triangle angles 
 
-Collide and MarkerDestry handle the collider that lets the player make contact with markers. 
+Collide and MarkerDestroy handle the collider that lets the player make contact with markers. 
 
 StartMarkerSpawn / FirstMarkerSpawn / SecondMarkerSpawn deals with spawning the markers at appropriate distance / angle on contact. 
 
@@ -42,8 +42,11 @@ Writeposition deals with writing the player's current position to file.
 
 #### Hierarchy
 [SteamVR] is part of the SteamVR imported package. No need to change anything here. 
+
 GameController handles the overall state of the game and scene restarts. 
-Plane and Lights are part of the base environment. 
+
+Plane and Lights are part of the base environment.
+
 CameraRig controls the navigation space and tracks the player's position within it. 
 
 
