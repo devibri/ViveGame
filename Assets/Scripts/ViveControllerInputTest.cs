@@ -23,7 +23,8 @@
 using UnityEngine;
 
 public class ViveControllerInputTest : MonoBehaviour
-{
+{   
+    // Get a reference to the controller
     private SteamVR_TrackedObject trackedObj;
 
     private SteamVR_Controller.Device Controller
@@ -31,11 +32,13 @@ public class ViveControllerInputTest : MonoBehaviour
         get { return SteamVR_Controller.Input((int)trackedObj.index); }
     }
 
+    // I don't know what this does
     void Awake()
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
     }
 
+    // Prints to the console when controller buttons are pressed
     private void Update()
     {
         if (Controller.GetAxis() != Vector2.zero)
