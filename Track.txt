@@ -515,3 +515,4 @@ Time:30.61528 Axis vector:(-0.2, 0.4) Thumbrotation:-24.59517
 Time:30.73482 Axis vector:(-0.2, 0.4) Thumbrotation:-24.59517
 Time:30.85119 Axis vector:(-0.2, 0.4) Thumbrotation:-24.59517
 Time:30.97083 Axis vector:(-0.2, 0.4) Thumbrotation:-24.59517
+-------New Trial--------
