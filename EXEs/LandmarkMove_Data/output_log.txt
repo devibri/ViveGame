@@ -1,0 +1,116 @@
+Initialize engine version: 5.6.2f1 (a2913c821e27)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1070 (ID=0x1b81)
+    Vendor:   NVIDIA
+    VRAM:     8145 MB
+    Driver:   21.21.13.7653
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\JonKellylab\Desktop\ExperimentTrials\LandmarkMove_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\JonKellylab\Desktop\ExperimentTrials\LandmarkMove_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\JonKellylab\Desktop\ExperimentTrials\LandmarkMove_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\JonKellylab\Desktop\ExperimentTrials\LandmarkMove_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\JonKellylab\Desktop\ExperimentTrials\LandmarkMove_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\JonKellylab\Desktop\ExperimentTrials\LandmarkMove_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\JonKellylab\Desktop\ExperimentTrials\LandmarkMove_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\JonKellylab\Desktop\ExperimentTrials\LandmarkMove_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\JonKellylab\Desktop\ExperimentTrials\LandmarkMove_Data\Managed\UnityEngine.VR.dll (this message is harmless)
+Loading C:\Users\JonKellylab\Desktop\ExperimentTrials\LandmarkMove_Data\Managed\UnityEngine.VR.dll into Unity Child Domain
+- Completed reload, in  0.014 seconds
+Platform assembly: C:\Users\JonKellylab\Desktop\ExperimentTrials\LandmarkMove_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\JonKellylab\Desktop\ExperimentTrials\LandmarkMove_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1200 59Hz; virtual: 3840x1200 at 0,0
+<RI> Initialized touch support.
+OpenVR initialized!
+ 
+(Filename:  Line: 424)
+
+UnloadTime: 0.392175 ms
+Connected to lighthouse:LHR-A0C9AB93
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 29c80 -> priority: 1 
+  Thread -> id: 2726c -> priority: 1 
+  Thread -> id: 26860 -> priority: 1 
+  Thread -> id: b540 -> priority: 1 
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.927169 ms
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 2779.
+Total: 0.332646 ms (FindLiveObjects: 0.086866 ms CreateObjectMapping: 0.026059 ms MarkObjects: 0.209500 ms  DeleteObjects: 0.009708 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.576127 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 2791.
+Total: 0.376846 ms (FindLiveObjects: 0.133109 ms CreateObjectMapping: 0.032958 ms MarkObjects: 0.201325 ms  DeleteObjects: 0.008175 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.577404 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 2803.
+Total: 0.339800 ms (FindLiveObjects: 0.088910 ms CreateObjectMapping: 0.030914 ms MarkObjects: 0.210267 ms  DeleteObjects: 0.008686 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.552366 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 2815.
+Total: 0.352830 ms (FindLiveObjects: 0.100918 ms CreateObjectMapping: 0.029636 ms MarkObjects: 0.213333 ms  DeleteObjects: 0.008175 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.562586 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 2827.
+Total: 0.382977 ms (FindLiveObjects: 0.109860 ms CreateObjectMapping: 0.034490 ms MarkObjects: 0.228918 ms  DeleteObjects: 0.008942 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.669125 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 2839.
+Total: 0.403927 ms (FindLiveObjects: 0.114714 ms CreateObjectMapping: 0.038323 ms MarkObjects: 0.241181 ms  DeleteObjects: 0.008686 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.571784 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 2851.
+Total: 0.362794 ms (FindLiveObjects: 0.094786 ms CreateObjectMapping: 0.030147 ms MarkObjects: 0.228918 ms  DeleteObjects: 0.008431 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.565907 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 2863.
+Total: 0.392941 ms (FindLiveObjects: 0.120846 ms CreateObjectMapping: 0.036534 ms MarkObjects: 0.227385 ms  DeleteObjects: 0.007664 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.630035 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 2875.
+Total: 0.406993 ms (FindLiveObjects: 0.122379 ms CreateObjectMapping: 0.036534 ms MarkObjects: 0.238882 ms  DeleteObjects: 0.008686 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.570506 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 2887.
+Total: 0.366115 ms (FindLiveObjects: 0.085077 ms CreateObjectMapping: 0.029125 ms MarkObjects: 0.241947 ms  DeleteObjects: 0.009708 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.567951 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 2899.
+Total: 0.383999 ms (FindLiveObjects: 0.098363 ms CreateObjectMapping: 0.033469 ms MarkObjects: 0.243991 ms  DeleteObjects: 0.007920 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.637700 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 2911.
+Total: 0.428965 ms (FindLiveObjects: 0.109604 ms CreateObjectMapping: 0.044455 ms MarkObjects: 0.265708 ms  DeleteObjects: 0.008431 ms)
+
+OpenVR Shutdown
+ 
+(Filename:  Line: 889)
+
