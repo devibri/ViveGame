@@ -1,0 +1,58 @@
+Initialize engine version: 5.6.1f1 (2860b30f0b54)
+GfxDevice: creating device client; threaded=1
+VR: OpenVR Error! OpenVR failed initialization with error code VRInitError_Init_PathRegistryNotFound: "Installation path could not be located (110)"!
+ 
+(Filename:  Line: 1028)
+
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: Intel(R) HD Graphics Family (ID=0xa16)
+    Vendor:   Intel
+    VRAM:     1112 MB
+    Driver:   20.19.15.4568
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Github\ViveGame\EXEs\Classroom_Move_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Github\ViveGame\EXEs\Classroom_Move_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Github\ViveGame\EXEs\Classroom_Move_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Github\ViveGame\EXEs\Classroom_Move_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Github\ViveGame\EXEs\Classroom_Move_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Github\ViveGame\EXEs\Classroom_Move_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Github\ViveGame\EXEs\Classroom_Move_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Github\ViveGame\EXEs\Classroom_Move_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Github\ViveGame\EXEs\Classroom_Move_Data\Managed\UnityEngine.VR.dll (this message is harmless)
+Loading C:\Github\ViveGame\EXEs\Classroom_Move_Data\Managed\UnityEngine.VR.dll into Unity Child Domain
+- Completed reload, in  0.195 seconds
+Platform assembly: C:\Github\ViveGame\EXEs\Classroom_Move_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Github\ViveGame\EXEs\Classroom_Move_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 2160x1440 59Hz; virtual: 2160x1440 at 0,0
+<RI> Initialized touch support.
+VR: OpenVR Error! OpenVR failed initialization with error code VRInitError_Init_PathRegistryNotFound: "Installation path could not be located (110)"!
+ 
+(Filename:  Line: 1028)
+
+VR: OpenVR Error! OpenVR failed initialization with error code VRInitError_Init_PathRegistryNotFound: "Installation path could not be located (110)"!
+ 
+(Filename:  Line: 1028)
+
+The referenced script on this Behaviour (Game Object 'Controller (right)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Controller (right)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Controller (left)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Controller (left)') is missing!
+ 
+(Filename:  Line: 1743)
+
+UnloadTime: 3.368962 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 2878 -> priority: 1 
+  Thread -> id: 19b0 -> priority: 1 

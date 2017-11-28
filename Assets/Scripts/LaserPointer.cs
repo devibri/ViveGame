@@ -28,7 +28,7 @@ public class LaserPointer : MonoBehaviour
      *
      *  This numbering scheme is used in the names of files recording participants' responses.
      */
-    private const int MoveMode = 0;
+    private const int MoveMode = 2;
 
     // Prefabs for reticles
     public GameObject answerReticlePrefab;
